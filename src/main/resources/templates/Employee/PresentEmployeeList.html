@@ -1,0 +1,82 @@
+
+
+<div data-th-fragment="presentEmployeeList" id="presentEmployeelist"
+	data-bs-keyboard="false" data-bs-backdrop="static"
+	class="modal bd-example-modal-lg" role="dialog">
+	<div class="modal-dialog modal-lg" style="margin-right: 33%;
+    margin-top: 3%;">
+		<div class="modal-content" style="    width: 1100px;"> 
+
+			<!--Profile close button  -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel" style="width: 43%">
+				<spam th:text="${defaultMonthAndYear}"/>
+				</h5>
+				<spam class="primary" >Working Days List </spam>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<!--  -->
+			
+			<!--Model body-->
+			 <div
+							class="d-flex align-items-center h-100"
+							style="background-color: white;">
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-12">
+
+										<div class="card">
+											<div class="card-body">
+												<div class="table-responsive">
+
+													<div class="container vertical-scrollable"
+														style="max-height: 65vh;">
+														<table class="table table-hover mb-0 ">
+															<thead>
+																<tr>
+																	<th scope="col">Date</th>
+																	<th scope="col">In Time</th>
+																	<th scope="col">Out Time</th>
+																	<th scope="col">Present</th>
+																	<th scope="col">Half Day</th>
+																	<th scope="col">OverTime</th>
+																	<th scope="col">Day Total</th>
+																</tr>
+															</thead>
+
+															<tbody>
+
+
+
+																<tr th:each="DateWiseDatas : ${defaultMonthDataPresentList}">
+																	<td><spam th:text="${DateWiseDatas.date}" /></td>
+																	<td><spam th:text="${DateWiseDatas.inTime}" /></td>
+																	<td><spam th:text="${DateWiseDatas.outTime}" /></td>
+																	<td><span class="success" th:text="${DateWiseDatas.present}? 'Present':'Absent'"></span></td>
+																	<td><spam th:text="${DateWiseDatas.halfDay}? 'Yes':'No' "/></td>
+																	<td><spam th:text="${DateWiseDatas.overTime}" /></td>
+																	<td><spam th:text="${DateWiseDatas.dayTotal}" /></td>
+																</tr>
+																
+															</tbody>
+
+														</table>
+														
+													</div>
+													
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+				<!-- Model body -->
+
+
+		</div>
+	</div>
+</div>

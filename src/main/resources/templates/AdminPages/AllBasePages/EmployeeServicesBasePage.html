@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content,title)">
+<head th:replace="~{AllLinks::bootstraplink}">
+	
+</head>
+<body style="background-color: white;">
+
+	<div>
+	<div th:replace="~{AdminPages/Navbar::AdminNavbar}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/AllSidebars/EmployeeSidebar::sidebar}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/PresentEmployeeList::presentEmployeeList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/AllPresentEmployeeList::AllpresentEmployeeList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/AllAbsentEmployeeList::AllabsentEmployeeList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/LatePunchingList::AllLatePunchingList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/OverTimeAllEmployee::AllOvertimeEmployeeList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/LeavesEmployeeList::absentEmployeeList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/EmployeeDetailsEdit::EmpDetailsEdit}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/SalaryDetailsEdit::SalaryDetailsEdit}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/LeavesTypesEdit::LeavesTypesEdit}"></div> 
+	</div>
+		
+	<div>
+	<div th:replace="~{AdminPages/AdminProfileModel::AdminProfile}"></div> 
+	</div>
+	<div>
+	<div th:replace="~{AdminPages/AdminProfileEdit::EmpDetailsEdit}"></div> 
+	</div>
+		
+	<div>
+	<div th:replace="${content}" ></div>
+	</div>
+	
+	
+	
+	
+	</body>
+
+	
+	<style th:replace="~{AllCssStyle::AllCssStyle}">
+	</style>
+	
+</html>

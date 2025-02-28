@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{AdminPages/AllBasePages/TodayUpdatesBasePage::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>In Out Service</title>
+</head>
+<body>
+
+	<section class="mainclass" style="margin-top: 4%;">
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="margin: auto; width: 20%;">In Out Updation</h5>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+								<div style="width: 17%; margin: auto;">
+									<div th:replace="~{RegistrationMessage::sucess_message}"></div>
+								</div>
+
+								<form th:action="@{'/admin/today/searchEmployee'}">
+									<div style="width: 40%; margin: auto; margin-top: 2%;">
+										<div style="display: flex;">
+											<div class="form-outline" data-mdb-input-init>
+												<input id="search-focus" type="search" class="form-control"
+													name="id" th:value="*{id}" placeholder="Enter employee id"
+													required="required" />
+											</div>
+											<div class="form-outline" data-mdb-input-init
+												style="margin-left: 3%;">
+												<input id="search-focus" type="date" class="form-control"
+													name="date" required="required" />
+											</div>
+										</div>
+										<button style="width: 50%; margin-left: 20%; margin-top: 3%;"
+											type="submit" class="btn btn-primary" data-mdb-ripple-init>Search
+										</button>
+										<hr>
+									</div>
+								</form>
+
+								<div>
+
+
+									<!--First box finish  -->
+									<div class="row" style="margin-top: 1%;">
+
+										<!--First Box Start  -->
+
+										<div class="col-xl-12 " style="margin: auto;">
+											<div class="card">
+												<div class="card-content">
+													<div class="card-body">
+														<p class="primary">Date Time And Punching</p>
+														<div style="display: flex;">
+															<div style="width: 100%; display: flex;">
+
+																<div class="row" th:if="${employee}">
+																	<div class="col-sm-8">
+																		<p class="mb-0">Employee Id</p>
+																	</div>
+																	<div class="col-sm-8">
+																		<p class="text-muted mb-0">
+																			<spam th:text="${employee.id}" />
+																		</p>
+																	</div>
+																</div>
+																<div class="row" th:if="${employee}">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Employee Name</p>
+																	</div>
+																	<div class="col-sm-12">
+																		<p class="text-muted mb-0">
+																			<spam th:text="${employee.employeeName}" />
+																			<spam th:text="${employee.employeeLastName}" />
+																		</p>
+																	</div>
+																</div>
+																<div class="row" style="margin: auto;"
+																	th:unless="${employee}">
+																	<div class="col-sm-12">
+																		<p style="width: 100%; margin: auto; color: red;"
+																			class="mb-0">Enter employee id</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<hr>
+
+														<div class="card mb-2" th:if="${employee}">
+															<div class="card-body">
+																<div
+																	style="width: 50%; margin: auto; display: grid; grid-template-columns: auto auto;">
+																	<div class="card text-center">
+																		<div>
+																			<h1 class="card-title" th:if="${inTime}" >
+																				<spam th:text="${inTime}" />
+																			</h1>
+																			<h1 class="card-title" th:unless="${inTime}" >
+																				<spam>Not Punch</spam>
+																			</h1>
+																			<div>
+																				<p class="card-text success">In Time</p>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="card text-center">
+																		<div>
+																			<h1 class="card-title" th:if="${outTime}">
+																				<spam th:text="${outTime}" />
+																			</h1>
+																			<h1 class="card-title" th:unless="${outTime}" >
+																				<spam>Not Punch</spam>
+																			</h1>
+																			<div>
+																				<p class="card-text success">Out Time</p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+																<button style="width: 17%; margin-left: 42%;" data-bs-toggle="modal"
+																data-bs-target="#InOutTimeEdit" type="button"
+																	class="btn btn-primary" data-mdb-ripple-init>Edit
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--First Box Close  -->
+
+
+
+										</div>
+
+									</div>
+
+
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

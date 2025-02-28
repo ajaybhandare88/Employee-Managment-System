@@ -1,0 +1,53 @@
+
+<nav th:fragment="AdminNavbar" class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+  
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#" style="margin-left: 3%;">
+      <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="30" alt="" loading="lazy" />
+    </a>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" style="margin: auto;" id="navbarSupportedContent">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: auto; margin-left: 40%;">
+      <li class="nav-item">
+          <a class="nav-link" th:href="@{'/admin/employee/dashbord'}">Dashbord</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" th:href="@{'/admin/employee/Services'}">Employee</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{'/admin/salary/slip'}">Salary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="${'/admin/today/updates'}">Todays</a>
+        </li>
+      </ul>
+    </div>
+   
+   	<div
+				class="d-grid gap-2 d-md-flex justify-content-md-end mr3">
+				<a class="nav-link active"
+				data-bs-toggle="modal" 
+				data-bs-target="#AdminProfile" 
+				type="button">
+				<div>
+					<!-- <img style="width: 44px; height: auto;" th:src="@{'/ProfilePics/'+${LoginUser.profilePic}}" class="rounded-circle" alt="p"> -->
+				<spam class="primary" th:text="${LoginUser.employeeName}" />
+				<spam class="primary" th:text="${LoginUser.employeeLastName}"/>
+				</div>
+				</a>
+				
+				<a 
+				class="nav-link active" style="color: red;"
+				aria-current="page" 
+				th:href="@{'/do-logout'}">Logout</a>
+					
+				
+			</div> 
+   
+  </div>
+ 
+</nav>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Dashbord Page</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 20%">
+										<spam>Dashbord /</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 32%;">
+										Welcome Back
+										<spam class="primary" th:text="${LoginUser.employeeName}" />
+										<spam class="primary" th:text="${LoginUser.employeeLastName}" />
+									</h5>
+
+									<h6 style="width: 13%">
+										<spam th:text="${FormatedCurrentDate}" />
+									</h6>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+
+
+								<div class="grey-bg container-fluid">
+									<div class="row">
+										<div class="col-12 mt-3 mb-1">
+											<form th:action="@{'/employee/filterMonth'}">
+												<div style="margin: 10px 0px;">
+													<div style="margin: auto 20px; padding: 0px;">
+																		<input style="border: 0px;" type="month"
+																			name="date" required="required">
+																	
+													<button type="submit" style="padding: 2px; width: 51px;"
+														class="btn btn-primary btn-sm" data-mdb-ripple-init>Search
+													</button>
+													</div>
+													<spam style="width: 20%; margin-left:5%;"
+														th:text="${defaultMonthAndYear}" />
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<a data-bs-toggle="modal"
+													data-bs-target="#presentEmployeelist" type="button"
+													style="width: 100%;">
+													<div class="card-body">
+														<div class="media d-flex">
+															<div class="media-body text-left">
+																<h3 class="primary" style="text-align: center">
+																	<spam th:text="${sizeOfPresentEmpInMonth}" />
+																	<spam th:text="${defaultMonthData}" />
+
+																</h3>
+																<div style="text-align: center">
+																	<span style="text-align: center">Total day Working
+																		</span>
+																</div>
+															</div>
+															<div class="align-self-center">
+																<i
+																	class="icon-book-open primary font-large-2 float-right"></i>
+															</div>
+														</div>
+														<div class="progress mt-1 mb-0" style="height: 7px;">
+															<div class="progress-bar bg-primary" role="progressbar"
+																style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+
+													</div>
+												</a>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<a data-bs-toggle="modal"
+													data-bs-target="#absentEmployeelist" type="button"
+													style="width: 100%;">
+													<div class="card-body">
+														<div class="media d-flex">
+															<div class="media-body text-left">
+																<h3 class="warning" style="text-align: center">
+																	<spam th:text="${sizeOfNotPresentEmpInMonth}" />
+																	<spam th:text="${defaultMonthDataabsent}" />
+																	
+																</h3>
+																<div style="text-align: center">
+																	<span>Total Day Leaves</span>
+																</div>
+															</div>
+															<div class="align-self-center">
+																<i class="icon-bubbles warning font-large-2 float-right"></i>
+															</div>
+														</div>
+														<div class="progress mt-1 mb-0" style="height: 7px;">
+															<div class="progress-bar bg-warning" role="progressbar"
+																style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div class="media d-flex">
+														<div class="media-body text-left">
+															<h3 class="success" style="text-align: center">
+																<spam th:text="${AvragePresenti} " />
+																%
+															</h3>
+															<div style="text-align: center">
+																<span>Presenti Average</span>
+															</div>
+														</div>
+														<div class="align-self-center">
+															<i class="icon-cup success font-large-2 float-right"></i>
+														</div>
+													</div>
+													<div class="progress mt-1 mb-0" style="height: 7px;">
+														<div class="progress-bar bg-success" role="progressbar"
+															style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+															aria-valuemax="100"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div class="media d-flex">
+														<div class="media-body text-left">
+															<h3 class="danger" style="text-align: center">
+																<spam th:text="${NetSalary} " />
+																Rs
+															</h3>
+															<div style="text-align: center">
+																<span>Net Salary</span>
+															</div>
+														</div>
+														<div class="align-self-center">
+															<i class="icon-direction danger font-large-2 float-right"></i>
+														</div>
+													</div>
+													<div class="progress mt-1 mb-0" style="height: 7px;">
+														<div class="progress-bar bg-danger" role="progressbar"
+															style="width: 40%" aria-valuenow="40" aria-valuemin="0"
+															aria-valuemax="100"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+
+							</div>
+
+							<div class="p-3 border " style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="margin: auto; width: 25%">Today Updates</h5>
+								</div>
+								<hr style="margin: 15px 0px; color: black;">
+
+
+								<div class="row">
+									<div class="col-xl-3 col-sm-2 col-2">
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div class="media d-flex">
+														<div class="media-body text-center">
+															<h3 style="font: 25px/1.3 Arial, sans-serif;">
+															<spam th:text="${currentDayDetailsInPunch}"/>
+															<spam style="font-size: x-small;" class="primary">AM</spam>
+															</h3>					
+															<hr style="margin: 5px 0px; color: black;">
+															<span>In Time</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-3 col-sm-6 col-12">
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div class="media d-flex">
+														<div class="media-body text-center">
+															<h3 style="font: 25px/1.3 Arial, sans-serif;">
+																<spam th:text="${currentDayDetailsOutPunch}" />
+																<spam style="font-size: x-small;" class="primary">PM</spam>
+															</h3>
+															<hr style="margin: 5px 0px; color: black;">
+															<span>Out Time</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xl-6 col-sm-6 col-12">
+										<div class="card">
+											<div class="card-content">
+												<div class="">
+													<div class="media d-flex">
+														<div class="media-body text-center">
+
+															<button type="button"
+																class="btn btn-primary btn-lg btn-block">Connecting
+																with other employee</button>
+															<hr style="margin: 5px 0px; color: black;">
+															<button type="button"
+																class="btn btn-secondary btn-lg btn-block">Contact
+																your Team Leader</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 1 -->
+
+		</div>
+		</div>
+
+		<!-- Dashbord end -->
+		<style>
+</style>
+
+	</section>
+</body>
+</html>

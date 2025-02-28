@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Resign Page</title>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+		<div>
+			<form th:action="@{'/employee/resignFormSubmit'}" method="post"
+				enctype="multipart/form-data">
+				<div style="background-color: white;">
+
+
+
+					<div class="container px-1">
+						<div class="row gx-6">
+							<div class="col">
+
+								<div class="p-3 border" style="margin-top: 2%;">
+									<div class="col-md-auto row">
+										<h5 style="width: 30%">
+											<spam>Resign/</spam>
+											<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+										</h5>
+
+										<h5 style="margin: auto; width: 30%;" class="primary">
+											Resignation details</h5>
+
+										<h6 style="width: 13%">
+											<spam th:text="${FormatedCurrentDate}" />
+										</h6>
+
+									</div>
+									<hr style="margin: 0px; color: black;">
+
+
+									<div style="width: 36%; margin: auto;">
+														<div th:replace="RegistrationMessage::sucess_message"></div>
+													</div>
+
+
+
+									<div class="row" style="margin-top: 2%;">
+										<!-- 	<div class="col-xl-6 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												
+												
+													<div class="card-header">
+														<h6>Employee Details</h6>
+													</div>
+													
+													<div class="card-body">
+														<div class="col-md-8">
+								<div class="tab-content profile-tab" id="myTabContent">
+									<div class="tab-pane fade show active" id="home"
+										role="tabpanel" aria-labelledby="home-tab">
+										<div class="row">
+											<div class="col-md-6">
+												<label>Employee Id</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.id}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Name</label>
+											</div>
+											<div class="col-md-6 " style="display: flex;">
+												<p th:text="${LoginUser.employeeName}" />
+												<p style="margin-left: 10px;"
+													th:text="${LoginUser.employeeLastName}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Phone</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.mobileNumber}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Department</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.Department}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Designation</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.Designation}" />
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+														
+
+													</div>
+												
+											</div>
+										</div>
+
+									</div> -->
+
+										<div class="col-xl-6 col-sm-6 col-12" style="margin: auto;">
+											<div class="card">
+												<div class="card-content">
+													<div class="card-body">
+														<div style="display: flex;">
+															<div style="width: 50%; margin-left: 38%;">
+																<p class="primary">Personal Information</p>
+															</div>
+														</div>
+														<hr>
+
+														<div class="card mb-4">
+															<div class="card-body" th:if="${LoginUser}">
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Employee Id</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<p class="text-muted mb-0">
+																			<spam th:text="${LoginUser.id}" />
+																		</p>
+																	</div>
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Employee Name</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<p class="text-muted mb-0">
+																			<spam th:text="${LoginUser.employeeName}" />
+																			<spam th:text="${LoginUser.employeeLastName}" />
+																		</p>
+																	</div>
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Department</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<p class="text-muted mb-0">
+																			<spam th:text="${LoginUser.Department}" />
+																		</p>
+																	</div>
+																</div>
+																<hr>
+
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Designation</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<p class="text-muted mb-0">
+																			<spam th:text="${LoginUser.Designation}" />
+																		</p>
+																	</div>
+																</div>
+
+
+																<hr>
+
+
+															</div>
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-xl-6 col-sm-6 col-12">
+
+											<div class="card">
+												<div class="card-content">
+
+
+													<div class="card-header">
+														<h6>Dates</h6>
+													</div>
+
+													<div class="card-body">
+
+														<div class="col-md-8">
+															<div class="tab-content profile-tab" id="myTabContent">
+																<div class="tab-pane fade show active" id="home"
+																	role="tabpanel" aria-labelledby="home-tab">
+																	<div class="row">
+																		<div class="col-md-6">
+																			<label>Joining Date</label>
+																		</div>
+																		<div class="col-md-6">
+																			<p th:text="${LoginUser.joiningDate}" />
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6">
+																			<label>Submitted On</label>
+																		</div>
+																		<div class="col-md-6">
+																			<input style="border: 0px; margin-bottom: 1rem;"
+																				type="date" name="resignSubmitDate"
+																				required="required">
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6">
+																			<label>Leaving Date</label>
+																		</div>
+																		<div class="col-md-6">
+																			<input style="border: 0px; margin-bottom: 1rem;"
+																				type="date" name="leavingDate" required="required">
+																		</div>
+																	</div>
+																	<div class="row">
+
+																		<div class="col-md-6">
+																			<label>Settlement Date</label>
+																		</div>
+																		<div class="col-md-6">
+																			<input style="border: 0px; margin-bottom: 1rem;"
+																				type="date" name="settlementDate"
+																				required="required">
+																		</div>
+
+																		<div class="col-md-6">
+																			<label>Reason</label>
+																		</div>
+																		<div class="col-md-6">
+																			<select id="form_need" name="reason"
+																				style="width: min-content; margin-bottom: 0.2rem;"
+																				class="form-control" required="required"
+																				data-error="Please specify your need.">
+																				<option value="" selected disabled>--Select
+																					reason--</option>
+																				<option>Fired by the company</option>
+																				<option>Normal Resignation</option>
+																				<option>Other</option>
+																			</select>
+																		</div>
+																	</div>
+
+
+																</div>
+															</div>
+
+														</div>
+														<div class="row">
+													<div class="col-md-12">
+																<div class="form-group">
+																	<label for="form_message">Reason*</label>
+																	<textarea id="form_message" name="text"
+																		class="form-control"
+																		placeholder="Write your message here." rows="4"
+																		required="required"
+																		data-error="Please, leave us a message."></textarea>
+																</div>
+
+															</div>
+												</div>
+												<div style="margin: auto; width: 18%;">
+											<button  type="submit" class="btn btn-secondary btn-sm">Small button</button>
+										</div>
+
+													</div>
+												</div>
+
+											</div>
+											
+										</div>
+
+
+
+									</div>
+
+									<!-- Second box start -->
+
+
+
+									<!--Second box end  -->
+
+								</div>
+							</div>
+						</div>
+					</div>
+			</form>
+			<!-- 1 -->
+
+		</div>
+		</div>
+
+		<!-- Dashbord end -->
+
+
+	</section>
+</body>
+</html>

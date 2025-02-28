@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Bank Details</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 20%">
+										<spam>Bank /</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 32%;">Bank Details</h5>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+
+
+
+								<div class="row" style="margin-top: 1%;">
+
+									<div class="col-xl-10 col-sm-6 col-12" style="margin: auto;">
+
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div style="display: flex;">
+														<div style="width: 50%; margin-left: 40%;">
+															<p class="primary">Banking information</p>
+														</div>
+
+
+
+														<div th:if="${loginUserBankDetails}">
+															<a type="button"
+																th:href="@{'/employee/editeBankDetails'}"
+																class="btn btn-primary btn-sm">Edite</a>
+														</div>
+														<div th:unless="${loginUserBankDetails}">
+															<a type="button"
+																th:href="@{'/employee/editeBankDetails'}"
+																class="btn btn-primary btn-sm">Add</a>
+														</div>
+													</div>
+													<hr>
+
+													<div style="width: 26%; margin: auto;">
+														<div th:replace="RegistrationMessage::sucess_message"></div>
+													</div>
+
+													<div class="card mb-4">
+														<div class="card-body" th:if="${loginUserBankDetails}">
+
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Bank Account Number</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam
+																			th:text="${loginUserBankDetails.bankAccountNumber}" />
+																	</p>
+																</div>
+															</div>
+
+
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Bank Name</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${loginUserBankDetails.bankName}" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">IFSC Code</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${loginUserBankDetails.IFSC_Code}" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Branch Name</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${loginUserBankDetails.branchName}" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Bank Address</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${loginUserBankDetails.bankAddress}" />
+																	</p>
+																</div>
+															</div>
+														</div>
+														<div class="row" style="margin: auto;"
+															th:unless="${loginUserBankDetails}">
+															<div class="col-sm-12">
+																<p style="width: 100%; margin: auto; color: red;"
+																	class="mb-0">No bank data found</p>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+
+
+
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 1 -->
+
+		</div>
+
+
+
+	</section>
+</body>
+</html>

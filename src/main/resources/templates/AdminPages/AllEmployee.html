@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{AdminPages/AllBasePages/EmployeeServicesBasePage::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Employee Profile</title>
+</head>
+<body>
+
+	<section class="mainclass" style="margin-top: 4%;">
+		<div style="background-color: white;">
+			<div class="card mb-4">
+				<div class="card-body ">
+					<!-- Grid row -->
+					<div class="row">
+						<!-- Grid column -->
+						<div class="col-md-12">
+							<div class="col-md-auto row text-muted mb-0">
+
+
+									<h5 class="primary" style="margin: 5px auto; width: 20%;">Employee Search</h5>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+								
+								<form th:action="@{'/admin/employee/searchById&Name'}" method="get">
+							<div class="input-group md-form form-sm form-2 pl-1 mt-1"
+								style="width: 50%; margin: auto;">
+								<input class="form-control my-0 py-1 pl-3 mr-2 purple-border" name="search"
+									type="text" placeholder="Search something here..."
+									aria-label="Search">
+								<button type="submit" class="btn btn-outline-secondary">Secondary</button>
+							</div>
+							</form>
+						</div>
+					</div>
+					
+					
+					
+					<div >
+						<div class="container">
+							
+							
+								<div class="card-body  bg-white">
+
+									<div class="container">
+										<div class="row">
+											<div class="col-sm primary">Id</div>
+											<div class="col-sm primary">First Name</div>
+											<div class="col-sm primary">Last Name</div>
+											<div class="col-sm primary">Department</div>
+											<div class="col-sm primary">Designation</div>
+
+										</div>
+									</div>
+								</div>
+
+						</div>
+					</div>
+					
+					
+					
+					<div class="table-responsive pt-2">
+						<div class="container vertical-scrollable"
+							style="max-height: 60vh;">
+							
+							<a th:each="ListOfEmployee: ${ListOfEmployee}"
+							th:href="@{'/admin/employee/search' (id=${ListOfEmployee.id})}" style="text-decoration: none;"
+							>
+								<div class="card-body mb-3 bg-white" style="box-shadow: 0px 0px 5px -2px black; border-radius: 10px; ">
+
+									<div class="container">
+										<div class="row">
+											<div class="col-sm"><spam class="" th:text="${ListOfEmployee.id}" /></div>
+											<div class="col-sm"><spam class="text-muted mb-0" th:text="${ListOfEmployee.employeeName}" /></div>
+											<div class="col-sm"><spam class="text-muted mb-0" th:text="${ListOfEmployee.employeeLastName}" /></div>
+											<div class="col-sm"><spam class="text-muted mb-0" th:text="${ListOfEmployee.Department}" /></div>
+											<div class="col-sm"><spam class="text-muted mb-0" th:text="${ListOfEmployee.Designation}" /></div>
+
+										</div>
+									</div>
+								</div>
+								  </a> 
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

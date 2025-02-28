@@ -1,0 +1,88 @@
+
+
+<div data-th-fragment="LeavesTypesEdit" id="LeavesTypesEdit"
+	data-bs-keyboard="false" data-bs-backdrop="static"
+	class="modal bd-example-modal-lg" role="dialog">
+	<div class="modal-dialog modal-lg"
+		style="margin:auto; margin-top: 2%;">
+		<div class="modal-content" style="width: 800px;">
+
+			<!--Profile close button  -->
+			<div class="modal-header">
+				<spam class="primary" style="margin-left: 40%;">Employee Leaves Details Edit </spam>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<!--  -->
+
+			<!--Model body-->
+			<div class="d-flex align-items-center h-100"
+				style="background-color: white;">
+
+				<div class="card-body">
+
+					 
+
+					<div class="card mb-4" th:if="${SearchEmpRemainingLeaves}" th:object="${SearchEmpRemainingLeaves}">
+						<form th:action="@{'/admin/employee/leavesUpdate?'(id=${SearchEmpDetails.id})}" method="post">
+						<div class="card-body" >
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Annual Leaves</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="annualeave"
+										class="form-control form-control-sm" th:value="*{annualEave}"
+										type="text" placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+
+
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Sick Leaves</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="sickLeave" th:value="*{sickLeave}"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter bank name">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Paid Leaves</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="paidLeave" th:value="*{paidLeave}"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter IFSC code">
+								</div>
+
+
+							</div>
+							
+						</div>
+						
+						<button type="submit"
+							class="btn btn-primary btn-lg btn-sm btn-block" style="width: 60%; margin: auto;">Update Leaves Details</button>
+						</form>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+		<!-- Model body -->
+
+
+	</div>
+</div>
+</div>

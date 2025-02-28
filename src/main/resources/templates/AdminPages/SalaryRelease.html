@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{AdminPages/AllBasePages/SalaryServicesBasePage::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Salary release</title>
+</head>
+<body>
+
+	<section class="mainclass" style="margin-top: 6%;">
+	<div style="background-color: white;">
+		<div style="background-color: white;">
+			<div class="card">
+				<div class="card-body ">
+					<!-- Grid row -->
+					<div class="row">
+						<!-- Grid column -->
+						<div class="col-md-12">
+							<div class="col-md-auto row text-muted mb-0">
+									<h5 class="primary" style="margin: 5px auto; width: 24%;">Salary release all employee</h5>
+							</div>
+								<hr style="margin: 0px; color: black;">
+						</div>
+						<div style="width: 33%; margin: auto;">
+									<div th:replace="~{RegistrationMessage::sucess_message}"></div>
+								</div>
+					</div>
+					<div class="grey-bg container-fluid">
+												<div class="row">
+													<div class="col-12 mt-3 mb-1">
+														<div style="margin: 0px 0px;">
+
+															<form
+																th:action="@{'/admin/salary/generateSalaryAllEmployee'}">
+															
+																<div class="row justify-content-center  d-grid "
+																	style="grid-template-columns: auto auto auto auto auto; margin: 0px;">
+																	<div style="margin: 0px 20px; padding: 0px;">
+																		<p style="margin: 0px; padding: 0px;" class="primary">Select Month</p>
+																	</div>
+
+																	<div style="margin: auto 20px; padding: 0px;">
+																		<input style="border: 0px;" type="month"
+																			name="releaseMonth" required="required">
+																	</div>
+
+																	<button type="submit"
+																		style="padding: 2px; "
+																		class="btn btn-success btn-sm" data-mdb-ripple-init>Generate Salary
+																	</button>
+																</div>
+															</form>
+
+															<spam style="width: 20%; margin-left:5%;" th:text="${Month}" />
+														</div>
+
+													</div>
+												</div>
+											</div>
+											
+											<div style="text-align: center;">
+												<h5 class="text-muted mb-0"><spam /></h5>
+											</div>
+					
+												<div class="row">
+												<div class="col-xl-4 col-sm-6 col-12">
+													<div class="card">
+														<div class="card-content">
+															<a data-bs-toggle="modal"
+																data-bs-target="#SalaryReleaseEmployeeList" type="button"
+																style="width: 100%;">
+																<div class="card-body">
+																	<div class="media d-flex">
+																		<div class="media-body text-left">
+																			<h3 class="success" style="text-align: center" th:if="${salaryReleaseEmpQuentity}">
+																				<spam th:text="${salaryReleaseEmpQuentity}"/>
+
+																			</h3>
+																			<div style="text-align: center">
+																				<span>Successfully Salary Release</span>
+																			</div>
+																		</div>
+																		<div class="align-self-center">
+																			<i
+																				class="icon-book-open success font-large-2 float-right"></i>
+																		</div>
+																	</div>
+																	<div class="progress mt-1 mb-0" style="height: 7px;">
+																		<div class="progress-bar bg-success"
+																			role="progressbar" style="width: 100%"
+																			aria-valuenow="80" aria-valuemin="0"
+																			aria-valuemax="100"></div>
+																	</div>
+
+																</div>
+															</a>
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-xl-4 col-sm-6 col-12">
+
+													<div class="card">
+														<div class="card-content">
+															<a data-bs-toggle="modal"
+																data-bs-target="#AllabsentEmployeelist" type="button"
+																style="width: 100%;">
+																<div class="card-body">
+																	<div class="media d-flex">
+																		<div class="media-body text-left">
+																			<h3 class="warning" style="text-align: center">
+																				<spam  />
+
+																			</h3>
+																			<div style="text-align: center">
+																				<span>Failed Salary Release List</span>
+																			</div>
+																		</div>
+																		<div class="align-self-center">
+																			<i
+																				class="icon-bubbles warning font-large-2 float-right"></i>
+																		</div>
+																	</div>
+																	<div class="progress mt-1 mb-0" style="height: 7px;">
+																		<div class="progress-bar bg-warning"
+																			role="progressbar" style="width: 100%"
+																			aria-valuenow="35" aria-valuemin="0"
+																			aria-valuemax="100"></div>
+																	</div>
+																</div>
+															</a>
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-xl-4 col-sm-6 col-12">
+
+													<div class="card">
+														<div class="card-content">
+															<div class="card-body">
+																<div class="media d-flex">
+																	<div class="media-body text-left">
+																		<h3 class="primary" style="text-align: center">
+																			<spam th:text="${totalNetReleaseSalaryAmout}"  />
+
+																		</h3>
+																		<div style="text-align: center">
+																			<span>Total Release Salary Amount</span>
+																		</div>
+																	</div>
+																	<div class="align-self-center">
+																		<i class="icon-cup primary font-large-2 float-right"></i>
+																	</div>
+																</div>
+																<div class="progress mt-1 mb-0" style="height: 7px;">
+																	<div class="progress-bar bg-primary" role="progressbar"
+																		style="width: 100%" aria-valuenow="60"
+																		aria-valuemin="0" aria-valuemax="100"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+
+
+											</div>
+					
+					
+					
+					
+					
+				</div>
+			</div>
+		</div>
+		<div style="background-color: white;">
+			<div class="card mb-4">
+				<div class="card-body ">
+					<!-- Grid row -->
+					<div class="row">
+						<!-- Grid column -->
+						<div class="col-md-12">
+							<div class="col-md-auto row text-muted mb-0">
+									<h5 class="primary" style="margin: 5px auto; width: 32%;"> <spam th:text="${Month}"/> Month release salary Details</h5>
+							</div>
+								<hr style="margin: 0px; color: black;">
+						</div>
+					</div>
+					
+											
+											<div style="text-align: center;">
+												<h5 class="text-muted mb-0"><spam /></h5>
+											</div>
+					
+												<div class="row">
+												<div class="col-xl-4 col-sm-6 col-12">
+													<div class="card">
+														<div class="card-content">
+															<a data-bs-toggle="modal"
+																data-bs-target="#SalaryReleaseAllEmployeeList" type="button"
+																style="width: 100%;">
+																<div class="card-body">
+																	<div class="media d-flex">
+																		<div class="media-body text-left">
+																			<h3 class="success" style="text-align: center">
+																				<spam th:text="${SalaryReleaseEmployee}"/>
+
+																			</h3>
+																			<div style="text-align: center">
+																				<span>Total Release Salary</span>
+																			</div>
+																		</div>
+																		<div class="align-self-center">
+																			<i
+																				class="icon-book-open success font-large-2 float-right"></i>
+																		</div>
+																	</div>
+																	<div class="progress mt-1 mb-0" style="height: 7px;">
+																		<div class="progress-bar bg-success"
+																			role="progressbar" style="width: 100%"
+																			aria-valuenow="80" aria-valuemin="0"
+																			aria-valuemax="100"></div>
+																	</div>
+
+																</div>
+															</a>
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-xl-4 col-sm-6 col-12">
+
+													<div class="card">
+														<div class="card-content">
+															<a data-bs-toggle="modal"
+																data-bs-target="#absentEmployeelist" type="button"
+																style="width: 100%;">
+																<div class="card-body">
+																	<div class="media d-flex">
+																		<div class="media-body text-left">
+																			<h3 class="warning" style="text-align: center">
+																				<spam />
+
+																			</h3>
+																			<div style="text-align: center">
+																				<span>Leaves List</span>
+																			</div>
+																		</div>
+																		<div class="align-self-center">
+																			<i
+																				class="icon-bubbles warning font-large-2 float-right"></i>
+																		</div>
+																	</div>
+																	<div class="progress mt-1 mb-0" style="height: 7px;">
+																		<div class="progress-bar bg-warning"
+																			role="progressbar" style="width: 100%"
+																			aria-valuenow="35" aria-valuemin="0"
+																			aria-valuemax="100"></div>
+																	</div>
+																</div>
+															</a>
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-xl-4 col-sm-6 col-12">
+
+													<div class="card">
+														<div class="card-content">
+														<a data-bs-toggle="modal"
+																data-bs-target="#AllOvertimeEmployeeList" type="button"
+																style="width: 100%;">
+															<div class="card-body">
+																<div class="media d-flex">
+																	<div class="media-body text-left">
+																		<h3 class="primary" style="text-align: center">
+																			<spam th:text="${netSalaryTotalAllEmployee}"  />
+
+																		</h3>
+																		<div style="text-align: center">
+																			<span>Total Salary Release</span>
+																		</div>
+																	</div>
+																	<div class="align-self-center">
+																		<i class="icon-cup primary font-large-2 float-right"></i>
+																	</div>
+																</div>
+																<div class="progress mt-1 mb-0" style="height: 7px;">
+																	<div class="progress-bar bg-primary" role="progressbar"
+																		style="width: 100%" aria-valuenow="60"
+																		aria-valuemin="0" aria-valuemax="100"></div>
+																</div>
+															</div>
+															</a>
+														</div>
+													</div>
+
+												</div>
+											</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+</body>
+</html>

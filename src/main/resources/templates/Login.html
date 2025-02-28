@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Login</title>
+</head>
+<body > 	
+		
+			<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form method="post" th:action="@{'login'}">
+          <!-- <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+            <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+            
+            <div style="width:35px; height: auto; margin-right:15px; margin-left: 62px;">
+            <a th:href="@{'/oauth2/authorization/google'}">
+             	<img alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI0VBNDMzNSIgZD0iTTI0IDkuNWMzLjU0IDAgNi43MSAxLjIyIDkuMjEgMy42bDYuODUtNi44NUMzNS45IDIuMzggMzAuNDcgMCAyNCAwIDEyLjA4IDAgMi4zMSA2LjkzLjQxIDE2LjdsNy45OCA2LjE5QzEwLjI2IDEzLjggMTYuNTQgOS41IDI0IDkuNXoiPjwvcGF0aD48cGF0aCBmaWxsPSIjMzRBODUzIiBkPSJNNDYuOTggMjQuNTVjMC0xLjU3LS4xNS0zLjA5LS4zOC00LjU1SDI0djkuMDJoMTIuOTRjLS41OCAyLjk2LTIuMjYgNS40OC00Ljc4IDcuMThsNy43MyA2YzQuNTEtNC4xOCA3LjA5LTEwLjM2IDcuMDktMTcuNjV6Ij48L3BhdGg+PHBhdGggZmlsbD0iI0ZCQkMwNSIgZD0iTTEwLjUzIDI4LjU5Yy0uNDgtMS40NS0uNzYtMi45OS0uNzYtNC41OXMuMjctMy4xNC43Ni00LjU5bC03Ljk4LTYuMTlDLjkyIDE2LjQ2IDAgMjAuMTIgMCAyNGMwIDMuODguOTIgNy41NCAyLjU2IDEwLjc4bDcuOTctNi4xOXoiPjwvcGF0aD48cGF0aCBmaWxsPSIjNDI4NUY0IiBkPSJNMjQgNDhjNi40OCAwIDExLjkzLTIuMTMgMTUuODktNS44MWwtNy43My02Yy0yLjE1IDEuNDUtNC45MiAyLjMtOC4xNiAyLjMtNy40NiAwLTEzLjc0LTQuOC0xNS40MS0xMS44N2wtNy45OCA2LjE5QzYuNjkgNDEuMDYgMTQuNjIgNDggMjQgNDh6Ij48L3BhdGg+PC9zdmc+">
+              </a>
+            </div>
+
+             <div style="width:40px; height: auto; margin-right:15px;">
+            <a th:href="@{'/oauth2/authorization/github'}">
+             	<img alt="" style="width:-webkit-fill-available;" src="https://th.bing.com/th/id/OIP.iULob0ZktL5EYMtxg_RNRQHaHk?rs=1&pid=ImgDetMain">
+              </a>
+            </div>
+
+            <div style="width:40px; height: auto; margin-right:15px;">
+            <a th:href="@{'/oauth2/authorization/facebook'}">
+             	<img style="width:-webkit-fill-available;" alt="" src="https://www.freeiconspng.com/uploads/logo-facebook-circle-png-pictures-9.png">
+               </a>
+            </div>
+          </div> -->
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0">SignIn</p>
+          </div>
+          
+          <a class="card-text" th:href="@{'/about'}" style="color: red;"> *If you don't have a username and password, click here to receive a testing account. </a>
+											
+
+          <!-- Email input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="text" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a employee id" name="username" required="required" />
+            <label class="form-label" for="form3Example3">Employee Id</label>
+          </div>
+
+          <!-- Password input -->
+          <div data-mdb-input-init class="form-outline mb-3">
+            <input type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Enter password" name="password" required="required" />
+            <label class="form-label" for="form3Example4">Password</label>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" required="required"/>
+              <label class="form-check-label" for="form2Example3">
+                Remember me
+              </label>
+            </div>
+            <a href="#!" class="text-body">Forgot password?</a>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2025. All rights reserved.
+    </div>
+    <!-- Copyright -->
+
+    <!-- Right -->
+    <div>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#!" class="text-white">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </div>
+</section>
+		
+</body>
+</html>
+<style>
+	.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+</style>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Bank Details</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 20%">
+										<spam>Bank /</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 32%;">Bank Details</h5>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+
+
+
+								<div class="row" style="margin-top: 1%;">
+
+									<div class="col-xl-10 col-sm-6 col-12" style="margin: auto;">
+
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div style="display: flex;">
+														<div style="width: 22%; margin: auto;" class="primary">
+															<p style="margin-bottom: 0;">Edit Banking information</p>
+														</div>
+														<div th:if="${loginUserBankDetails}">
+																<a type="button" th:href="@{'/employee/BankDetails'}"
+																	class="btn btn-primary btn-sm">Back</a>
+															</div>
+														<div th:unless="${loginUserBankDetails}">
+																<a type="button" th:href="@{'/employee/BankDetails'}"
+																	class="btn btn-primary btn-sm">Back</a>
+															</div>
+
+													</div>
+													<hr>
+
+													<form th:action="@{'/employee/updateBankDetails'}" method="post">
+
+														<div class="card mb-4">
+															<div class="card-body" th:if="${loginUserBankDetails}"
+																th:object="${loginUserBankDetails}">
+
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Bank Account Number</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input th:value="*{bankAccountNumber}"
+																		name="bankAccountNumber"
+																			class="form-control form-control-sm" type="text"
+																			placeholder="Enter bank account number">
+																	</div>
+
+
+																</div>
+
+
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Bank Name</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input th:value="*{bankName}" name="bankName"
+																			class="form-control form-control-sm" type="text"
+																			placeholder="Enter bank name">
+																	</div>
+
+
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">IFSC Code</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input th:value="*{IFSC_Code}" name="IFSC_Code"
+																			class="form-control form-control-sm" type="text"
+																			placeholder="Enter IFSC code">
+																	</div>
+
+
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Branch Name</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input th:value="*{branchName}" name="branchName"
+																			class="form-control form-control-sm" type="text"
+																			placeholder="Enter branch name">
+																	</div>
+
+
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Bank Address</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input th:value="*{bankAddress}" name="bankAddress"
+																			class="form-control form-control-sm" type="text"
+																			placeholder="Enter bank address">
+																	</div>
+
+
+																</div>
+															</div>
+															<div class="card-body"
+																th:unless="${loginUserBankDetails}">
+
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Bank Account Number</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input class="form-control form-control-sm" name="bankAccountNumber"
+																			type="text" placeholder="Enter bank account number">
+																	</div>
+
+
+																</div>
+
+
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Bank Name</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input class="form-control form-control-sm" name="bankName"
+																			type="text" placeholder="Enter bank name">
+																	</div>
+
+
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">IFSC Code</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input class="form-control form-control-sm" name="IFSC_Code"
+																			type="text" placeholder="Enter IFSC code">
+																	</div>
+
+
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Branch Name</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input class="form-control form-control-sm" name="branchName"
+																			type="text" placeholder="Enter branch name">
+																	</div>
+
+
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-6">
+																		<p class="mb-0">Bank Address</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<input class="form-control form-control-sm" name="bankAddress"
+																			type="text" placeholder="Enter bank address">
+																	</div>
+																</div>
+															</div>
+															<button type="submit"
+																class="btn btn-primary btn-lg btn-sm btn-block">Update/Add
+																Bank Details</button>
+
+														</div>
+													</form>
+
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+
+
+
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 1 -->
+
+		</div>
+
+
+
+	</section>
+</body>
+</html>

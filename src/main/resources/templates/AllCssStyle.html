@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<style th:fragment="AllCssStyle">
+	
+	body {
+	background-color: #fbfbfb;
+}
+
+@media ( min-width : 991.98px) {
+	main {
+		padding-left: 240px;
+	}
+}
+
+/* Sidebar */
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	padding: 58px 0 0; /* Height of navbar */
+	box-shadow: 0 2px 5px 0 rgb(0 0 0/ 5%), 0 2px 10px 0 rgb(0 0 0/ 5%);
+	width: 240px;
+	z-index: 600;
+}
+
+@media ( max-width : 991.98px) {
+	.sidebar {
+		width: 100%;
+	}
+}
+
+.sidebar .active {
+	border-radius: 5px;
+	box-shadow: 0 2px 5px 0 rgb(0 0 0/ 16%), 0 2px 10px 0 rgb(0 0 0/ 12%);
+}
+
+.sidebar-sticky {
+	position: relative;
+	top: 0;
+	height: calc(100vh - 48px);
+	padding-top: 0.5rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* Scrollable contents if viewport is shorter than content. */
+}
+	
+	.mainclass{
+	     background-color: lightblue; 
+    width: 83%;
+    margin-left: 16%;
+	}
+.ml3{
+	margin-left: 3%;
+}
+.p0{
+    padding-left: 0px;
+}
+.mr3{
+	margin-right: 3%;
+}
+.box-s{
+	box-shadow: 0px -3px 5px 1px black;
+}
+
+.box-rr{
+	box-shadow: 0px -3px 5px 1px black;
+}
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+padding-top: 2%;
+}
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+
+.pl{
+	padding-right: 18%;	
+}
+
+
+
+
+@media (min-width: 992px) {
+.card-registration-2 .bg-indigo {
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+}
+}
+@media (max-width: 991px) {
+.card-registration-2 .bg-indigo {
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+}
+}
+
+.display-fix{
+	position: fixed;
+	width:100%;
+	z-index:1;
+}
+
+.blac-white{
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.blac-white:hover{
+	color: black;
+	background-color: white;
+}
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+.google-btn {
+            height: 40px;
+            background-color: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            padding: 0 12px;
+            transition: background-color 0.2s;
+        }
+
+        .google-btn:hover {
+            background-color: #f8f9fa;
+            border-color: #dadce0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .google-btn:active {
+            background-color: #f1f3f4;
+        }
+
+        .google-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+
+        .btn-text {
+            color: #3c4043;
+            font-family: "Google Sans", Roboto, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.25px;
+        }
+        
+     
+
+.emp-profile{
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+label {
+    color: #333;
+}
+
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px;
+    }
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px;
+
+}
+
+.card{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.c{
+	background-color: white;
+}
+
+
+        
+	</style>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+
+ 
+ <!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Attendance & Leaves</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top:2%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 30%">
+										<spam>Attendance & Leave/</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 30%;" class="primary">
+										<spam th:text="${LastTenDaysData}"/>
+										</h5>
+										
+										<div th:if="${DateWiseData}" style="display: grid;  grid-template-columns: auto auto auto auto; width: 30%; " >
+							<spam class="primary" th:text="${SearchDatefrom}" />
+							<spam th:if="${DateWiseData == null }">To </spam>
+							<spam class="primary" th:text="${SearchDateto}" /> 
+							</div>
+										
+
+									<h6 style="width: 13%">
+										<spam th:text="${FormatedCurrentDate}" />
+									</h6>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+
+
+								<div class="grey-bg container-fluid">
+									<div class="row">
+										<div class="col-12 mt-3 mb-1">
+												<div style="margin: 0px 0px;">
+
+													<form th:action="@{'/employee/filterDateWise'}">
+														<div class="card row justify-content-center  d-grid "
+															style="grid-template-columns: auto auto auto auto auto; margin: 0px;">
+
+															<div style="margin: 0px 20px; padding: 0px;">
+																<p style="margin: 0px; padding: 0px;" class="primary">From</p>
+															</div>
+
+															<div style="margin: auto 20px; padding: 0px;">
+																<input style="border: 0px;" type="date" name="fromDate"
+																	required="required">
+															</div>
+
+															<div style="margin: 0px 20px; padding: 0px;">
+																<p class="primary" style="margin: 0px; padding: 0px;">To</p>
+															</div>
+
+															<div style="margin: auto 20px; padding: 0px;">
+																<input style="border: 0px;" type="date" name="toDate"
+																	required="required">
+															</div>
+
+															<button type="submit" style="padding: 2px; width: 51px;"
+																class="btn btn-primary btn-sm" data-mdb-ripple-init>Search
+															</button>
+
+														</div>
+													</form>
+
+
+
+
+													<spam style="width: 20%; margin-left:5%;"
+														th:text="${defaultMonthAndYear}" />
+												</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<a data-bs-toggle="modal"
+													data-bs-target="#presentEmployeelist" type="button"
+													style="width: 100%;">
+													<div class="card-body">
+														<div class="media d-flex">
+															<div class="media-body text-left">
+																<h3 class="success" style="text-align: center">
+																	<spam th:text="${FilterDatePresentEmp}" />
+																	
+																</h3>
+																<div style="text-align: center">
+																<span>Present Days List</span>
+																</div>
+															</div>
+															<div class="align-self-center">
+																<i
+																	class="icon-book-open success font-large-2 float-right"></i>
+															</div>
+														</div>
+														<div class="progress mt-1 mb-0" style="height: 7px;">
+															<div class="progress-bar bg-success" role="progressbar"
+																style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+
+													</div>
+												</a>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<a data-bs-toggle="modal"
+													data-bs-target="#absentEmployeelist" type="button"
+													style="width: 100%;">
+													<div class="card-body">
+														<div class="media d-flex">
+															<div class="media-body text-left">
+																<h3 class="warning" style="text-align: center">
+																	<spam th:text="${FilterDateAbsentEmp}"/>
+																	
+																</h3>
+																<div style="text-align: center">
+																<span>Leaves Days List</span>
+																</div>
+															</div>
+															<div class="align-self-center">
+																<i class="icon-bubbles warning font-large-2 float-right"></i>
+															</div>
+														</div>
+														<div class="progress mt-1 mb-0" style="height: 7px;">
+															<div class="progress-bar bg-warning" role="progressbar"
+																style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+													</div>
+												</a>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div class="media d-flex">
+														<div class="media-body text-left">
+															<h3 class="primary" style="text-align: center">
+															<spam th:text="${AvragePresenti}"/>
+															%
+															</h3>
+															<div style="text-align: center">
+															<span>Avrage Presenti</span>
+															</div>
+														</div>
+														<div class="align-self-center">
+															<i class="icon-cup primary font-large-2 float-right"></i>
+														</div>
+													</div>
+													<div class="progress mt-1 mb-0" style="height: 7px;">
+														<div class="progress-bar bg-primary" role="progressbar"
+															style="width: 60%" aria-valuenow="60" aria-valuemin="0"
+															aria-valuemax="100"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-xl-3 col-sm-6 col-12">
+
+										<div class="card">
+											<div class="card-content">
+												
+													<div class="card-body">
+														<div class="media d-flex">
+															<div class="media-body text-left">
+																<h3 class="danger" style="text-align: center">
+																	<spam th:text="${FilterDateTotalEarning}"/>
+																	Rs
+																</h3>
+																<div style="text-align: center">
+																<span>Total Earning</span>
+																</div>
+															</div>
+															<div class="align-self-center">
+																<i
+																	class="icon-direction danger font-large-2 float-right"></i>
+															</div>
+														</div>
+														<div class="progress mt-1 mb-0" style="height: 7px;">
+															<div class="progress-bar bg-danger" role="progressbar"
+																style="width: 40%" aria-valuenow="40" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+													</div>
+											
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							
+							<!-- Second box start -->
+
+							<div class="p-3 border " style="margin-top:1%; padding: 0px;" >
+							
+							<div th:if="${DateWiseData}" style="display: grid;  grid-template-columns: auto auto auto auto; width: 30%; " >
+							<spam class="primary" th:text="${SearchDatefrom}" />
+							<spam class="primary" th:text="${SearchDateto}" /> 
+							</div>
+							
+							<div th:if="${LastTenDaysData}" style="display: grid;  grid-template-columns: auto auto auto auto; width: 30%; " >
+							<spam class="primary" th:text="${LastTenDaysData}" />
+							</div>
+							
+								
+								<div th:if="${DateWiseData}"
+							class="d-flex align-items-center h-100"
+							style="background-color: white;">
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-12">
+
+										<div>
+											<div class="" >
+												<div class="table-responsive">
+
+													<div class="container vertical-scrollable"
+														style="max-height: 35vh;">
+														<table class="table table-hover mb-0 ">
+															<thead>
+																<tr>
+																	<th scope="col">Date</th>
+																	<th scope="col">In Time</th>
+																	<th scope="col">Out Time</th>
+																	<th scope="col">Present</th>
+																	<th scope="col">Half Day</th>
+																	<th scope="col">OverTime</th>
+																	<th scope="col">Day Total</th>
+																</tr>
+															</thead>
+
+															<tbody>
+																<tr th:each="DateWiseDatas : ${DateWiseData}">
+																	<td><spam th:text="${DateWiseDatas.date}" /></td>
+																	<td><spam th:text="${DateWiseDatas.inTime}" /></td>
+																	<td><spam th:text="${DateWiseDatas.outTime}" /></td>
+																	<td th:if="${DateWiseDatas.present==true}"><span style="color:green;" th:text="${DateWiseDatas.present}? 'Present' :'Absent'"></span></td>
+																	<td th:if="${DateWiseDatas.present==false} "><span style="color:red;">Absent</span></td>
+																	<td th:if="${DateWiseDatas.halfDay==true}" > <spam style="color:red;">Half Day</spam> </td>
+																	<td th:if="${DateWiseDatas.halfDay==false}" > <spam >Full Day </spam> </td>
+																	<td><spam th:text="${DateWiseDatas.overTime}" /></td>
+																	<td><spam th:text="${DateWiseDatas.dayTotal}" /></td>
+																</tr>
+															</tbody>
+
+														</table>
+														
+													</div>
+													
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+							</div>
+							<!--Second box end  -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 1 -->
+
+		</div>
+		</div>
+
+		<!-- Dashbord end -->
+		<style>
+</style>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!-- <!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Salary Details</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+		Sidebar
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+		Sidebar End
+
+		Dashbord start
+
+		<div>
+			<div style="background-color: white;">
+
+				<nav aria-label="breadcrumb" class="main-breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+						<li class="breadcrumb-item active" aria-current="page">User
+							Profile</li>
+					</ol>
+				</nav>
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+							<div class="p-3 border bg-light">
+
+
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											
+											<div class="col-md-8">
+								<div class="tab-content profile-tab" id="myTabContent">
+									<div class="tab-pane fade show active" id="home"
+										role="tabpanel" aria-labelledby="home-tab">
+										<div class="row">
+											<div class="col-md-6">
+												<label>Employee Id</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.id}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Name</label>
+											</div>
+											<div class="col-md-6 " style="display: flex;">
+												<p th:text="${LoginUser.employeeName}" />
+												<p style="margin-left: 10px;"
+													th:text="${LoginUser.employeeLastName}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Phone</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.mobileNumber}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Department</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.Department}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Designation</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.Designation}" />
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+											
+										</div>
+										<div class="col">
+										
+										<div class="col-md-8">
+								<div class="tab-content profile-tab" id="myTabContent">
+									<div class="tab-pane fade show active" id="home"  th:if="${loginUserBankDetails}"
+										role="tabpanel" aria-labelledby="home-tab">
+										<div class="row" th:if="${loginUserBankDetails}">
+											<div class="col-md-6">
+												<label>Bank Name</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${loginUserBankDetails.bankName}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Bank A/C No.</label>
+											</div>
+											<div class="col-md-6 " style="display: flex;">
+												<p th:text="${loginUserBankDetails.bankAccountNumber}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>IFSC CODE</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${loginUserBankDetails.IFSC_Code}" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>PF NO.</label>
+											</div>
+											<div class="col-md-6">
+												<p> No</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<label>Month</label>
+											</div>
+											<div class="col-md-6">
+												<p th:text="${LoginUser.Designation}" />
+											</div>
+										</div>
+
+									</div>
+									<div th:unless="${loginUserBankDetails}">
+										<p class="danger">No Bank Details</p>
+									</div>
+
+								</div>
+							</div>
+										
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col">
+										
+										<table class="table table-bordered">
+  
+  <tbody>
+    <tr>
+      <th scope="row">Basic Salary</th>
+      <td>
+      	<span th:text="${LoginUserSalaryDetails.basicSalary}+' Rs'"></span>
+      </td>
+      <th scope="row">medicalAllowance</th>
+      <td>
+      	<span th:text="${LoginUserSalaryDetails.HouseRentAllAllowance}+' Rs'"></span>
+      </td>
+      <th scope="row">Provident Fund</th>
+      <td>
+      	<span th:text="${LoginUserSalaryDetails.providentFund}+' Rs'"></span>
+      </td>
+      
+    </tr>
+    <tr>
+      <th scope="row">House Rent All Allowance</th>
+      <td>
+      <span th:text="${LoginUserSalaryDetails.HouseRentAllAllowance}+' Rs'"></span>
+      </td>
+      <th scope="row">Personal Allowance</th>
+      <td>
+      <span th:text="${LoginUserSalaryDetails.persnolAllowance}+' Rs'"></span>
+      </td>
+      <th scope="row">Professional Tax</th>
+      <td>
+      <span th:text="${LoginUserSalaryDetails.professionalTax}+' Rs'"></span>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Transporting Allowance</th>
+      <td>
+      <span th:text="${LoginUserSalaryDetails.transportingAllowance}+' Rs'"></span>
+      </td>
+      <th scope="row">Insuranse</th>
+      <td>
+      <span th:text="${LoginUserSalaryDetails.insurance}+' Rs'"></span>
+       </td>
+       <th scope="row">Tax</th>
+      <td>
+     	 No
+      </td>
+    </tr>
+    
+    
+    <tr>
+      <th scope="row">Gross Earning</th>
+      <td>
+      <span th:text="${LoginUserSalaryDetails.grossEarning}+' Rs'"></span>
+       </td>
+       <th scope="row">Other Duduction</th>
+     <td>
+      <span th:text="${LoginUserSalaryDetails.otherDeduction}+' Rs'"></span>
+       </td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Net Salary</th>
+      <td colspan="4" style="background-color: #f8f9fa!important;"/>
+     <td>
+      <span style="color: green; text-align: right;" th:text="${LoginUserSalaryDetails.netSalary}+' Rs'"></span>
+       </td>
+    </tr>
+  </tbody>
+</table>
+										
+										
+										</div>
+										<button style="text-align: center; color: red; width: 40%; margin:auto; ">DOWNLOAD PAY SLIP</button>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+		Dashbord end
+
+
+	</section>
+</body>
+</html> -->
+
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Salary Details</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 20%">
+										<spam>Salary /</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 15%;"  class="primary">Salary Details</h5>
+									
+									<button style="width: 12%; margin-bottom: 5px;" type="button" class="btn btn-secondary btn-sm">Download pay slip</button>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+
+
+								<div class="row" style="margin-top: 1%; display: grid; grid-template-columns: auto auto;">
+								
+								
+									
+									<!--banking information box start  -->
+									
+									<div class="col-xl-12 col-sm-6 col-12" style="margin: auto;">
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div style="display: flex;">
+														<div style="width: 50%; margin-left: 38%;">
+															<p class="primary">Information</p>
+														</div>
+													</div>
+													<hr>
+
+													<div class="card mb-4">
+														<div class="card-body" th:if="${loginUserBankDetails}">
+														
+														<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Employee Name</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${LoginUser.employeeName}" />
+																		<spam th:text="${LoginUser.employeeLastName}" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Department</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${LoginUser.Department}"/>
+																	</p>
+																</div>
+															</div>
+															<hr>
+
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Bank Account Number</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam
+																			th:text="${loginUserBankDetails.bankAccountNumber}" />
+																	</p>
+																</div>
+															</div>
+
+
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Bank Name</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${loginUserBankDetails.bankName}" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															
+														</div>
+														<div class="row" style="margin: auto;"
+															th:unless="${loginUserBankDetails}">
+															<div class="col-sm-12">
+																<p style="width: 100%; margin: auto; color: red;"
+																	class="mb-0">No bank data found</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Banking information box end -->
+									
+									<!--First Box Start  -->
+
+									<div class="col-xl-12 col-sm-6 col-12" style="margin: auto;">
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+													<div style="display: flex;">
+														<div style="width: 45%; margin-left: 40%;">
+															<p class="primary">Salary Details</p>
+														</div>
+													</div>
+													<hr>
+
+													<div class="card mb-4">
+														<div class="card-body" th:if="${LoginUser}">
+
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Basic Salary</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam
+																			th:text="${LoginUserSalaryDetails.basicSalary}+' Rs'" />
+																			
+																	</p>
+																</div>
+															</div>
+
+
+															<hr>
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">Transporting Allowance</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${LoginUserSalaryDetails.transportingAllowance}+' Rs'" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															
+															<div class="row">
+																<div class="col-sm-6">
+																	<p class="mb-0">professionalTax</p>
+																</div>
+																<div class="col-sm-6">
+																	<p class="text-muted mb-0">
+																		<spam th:text="${LoginUserSalaryDetails.professionalTax}+' Rs'" />
+																	</p>
+																</div>
+															</div>
+															<hr>
+															
+														</div>
+														<div class="row" style="margin: auto;"
+															th:unless="${LoginUser}">
+															<div class="col-sm-12">
+																<p style="width: 100%; margin: auto; color: red;"
+																	class="mb-0">No bank data found</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!--First Box Close  -->
+								</div>
+									
+									
+
+
+							</div>
+
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 1 -->
+
+
+
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,83 @@
+
+
+<div data-th-fragment="InOutTimeEdit" id="InOutTimeEdit"
+	data-bs-keyboard="false" data-bs-backdrop="static"
+	class="modal bd-example-modal-lg" role="dialog">
+	<div class="modal-dialog modal-lg"
+		style="margin-right: 33%; margin-top: 3%;">
+		<div class="modal-content" style="width: 1100px;">
+
+			<!--Profile close button  -->
+			<div class="modal-header">
+				<spam class="primary">Edit In And Out Time</spam>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<!--  -->
+
+			<!--Model body-->
+			<div class="d-flex align-items-center h-100"
+				style="background-color: white;">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12">
+
+							<div class="card">
+								<div class="card-body">
+
+									<form th:action="@{'/admin/today/updatePunchingTime'}" method="post">
+									
+										<div class="card text-center bg-white" style="width: 13%; margin: auto;">
+												<div>
+													<h1 class="card-title">
+														<input id="search-focus" style="border: none;" readonly type="date" class="form-control bg-white"
+															name="date" th:value="${date}" required="required" />
+													</h1>
+												</div>
+											</div>
+											
+										<div style="width: 50%; margin: auto; display: grid; grid-template-columns: auto auto;">
+											<div class="card text-center">
+											<input  type="number" class="form-control"
+															name="id" th:value="${employeeId}" required="required" hidden="true"/>
+												<div>
+													<h1 class="card-title">
+														<input id="search-focus" type="time" class="form-control"
+															name="intime" th:value="${inTime}" required="required" />
+													</h1>
+													<div>
+														<p class="card-text success">In Time</p>
+													</div>
+												</div>
+											</div>
+
+											<div class="card text-center">
+												<div>
+													<h1 class="card-title">
+														<input id="search-focus" type="time" class="form-control"
+															name="outtime" th:value="${outTime}" required="required" />
+													</h1>
+													<div>
+														<p class="card-text success">Out Time</p>
+													</div>
+												</div>										
+											</div>
+											
+										</div>
+										<button style="width: 17%; margin-left: 42%;" type="submit"
+											class="btn btn-primary" data-mdb-ripple-init>Update
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- Model body -->
+
+
+		</div>
+	</div>
+</div>

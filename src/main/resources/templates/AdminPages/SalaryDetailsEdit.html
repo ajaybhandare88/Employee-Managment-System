@@ -1,0 +1,256 @@
+
+
+<div data-th-fragment="SalaryDetailsEdit" id="SalaryDetailsEdit"
+	data-bs-keyboard="false" data-bs-backdrop="static"
+	class="modal bd-example-modal-lg" role="dialog">
+	<div class="modal-dialog modal-lg"
+		style="margin:auto; margin-top: 2%;">
+		<div class="modal-content" style="width: 800px;">
+
+			<!--Profile close button  -->
+			<div class="modal-header">
+				<spam class="primary" style="margin-left: 40%;">Employee Details Edit </spam>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<!--  -->
+
+			<!--Model body-->
+			<div class="d-flex align-items-center h-100"
+				style="background-color: white;">
+
+				<div class="card-body">
+
+					 
+
+					<div class="card mb-4" th:if="${SearchEmpSalaryDetails}" th:object="${SearchEmpSalaryDetails}">
+						<form th:action="@{'/admin/employee/salaryUpdate?'(id=${SearchEmpDetails.id})}" method="post">
+						<div class="card-body" >
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Basic Salary</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="basicSalary"
+										class="form-control form-control-sm" th:value="*{basicSalary}"
+										type="text" placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+
+
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Medical Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="medicalAllowance" th:value="*{medicalAllowance}"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter bank name">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Rent Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="HouseRentAllAllowance" th:value="*{HouseRentAllAllowance}"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter IFSC code">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Persnol Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="persnolAllowance" th:value="*{persnolAllowance}"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter branch name">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Transporting Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="transportingAllowance" th:value="*{transportingAllowance}"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter bank address">
+								</div>
+
+
+							</div>
+
+							<hr>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Insurance</p>
+								</div>
+								<div class="col-sm-6">
+									<input class="form-control form-control-sm"
+										th:value="*{insurance}" name="insurance" type="text"
+										placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+							<hr>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Professional Tax</p>
+								</div>
+								<div class="col-sm-6">
+									<input class="form-control form-control-sm"
+										th:value="*{professionalTax}" name="professionalTax"
+										type="text" placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+						</div>
+						
+						<button type="submit"
+							class="btn btn-primary btn-lg btn-sm btn-block" style="width: 60%; margin: auto;">Update Salary Details</button>
+						</form>
+					</div>
+					
+					
+					<!-- <div class="card mb-4" th:unless="${SearchEmpSalaryDetails}" >
+						<form th:action="@{'/admin/updateSalaryDetails?'(id=${SearchEmpDetails.id})}" method="post">
+						<div class="card-body" >
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Basic Salary</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="basicSalary"
+										class="form-control form-control-sm"
+										type="text" placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+
+
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Medical Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="medicalAllowance"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter bank name">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Rent Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="HouseRentAllAllowance" 
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter IFSC code">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Persnol Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="persnolAllowance"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter branch name">
+								</div>
+
+
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Transporting Allowance</p>
+								</div>
+								<div class="col-sm-6">
+									<input name="transportingAllowance"
+										class="form-control form-control-sm" type="text"
+										placeholder="Enter bank address">
+								</div>
+
+
+							</div>
+
+							<hr>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Insurance</p>
+								</div>
+								<div class="col-sm-6">
+									<input class="form-control form-control-sm"
+										name="insurance" type="text"
+										placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+							<hr>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<p class="mb-0">Professional Tax</p>
+								</div>
+								<div class="col-sm-6">
+									<input class="form-control form-control-sm"
+										 name="professionalTax"
+										type="text" placeholder="Enter bank account number">
+								</div>
+
+
+							</div>
+						</div>
+						
+						<button type="submit"
+							class="btn btn-primary btn-lg btn-sm btn-block">Update/Add
+							Bank Details</button>
+						</form>
+					</div> -->
+					
+
+
+				</div>
+
+
+			</div>
+		</div>
+		<!-- Model body -->
+
+
+	</div>
+</div>
+</div>

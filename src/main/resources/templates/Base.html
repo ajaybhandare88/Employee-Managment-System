@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content,title)">
+<head th:replace="~{AllLinks::bootstraplink}">
+	
+</head>
+<body style="background-color: white;">
+	
+	<div th:if="${LoginUser}">
+	<div th:replace="~{Employee/EmployeeNavbar::navbar}" >
+	</div>
+	
+		
+	
+	</div>
+	
+	<div th:unless="${LoginUser}">
+	 <div th:unless="${LoginUser}" th:replace="~{PublicNavbar::navbar}" > </div>
+	</div>
+	
+	<div th:if="${LoginUser}">
+	<div th:replace="~{Employee/ProfilePage::profile}" ></div> 
+	</div>
+	
+	<div th:if="${LoginUser}">
+	<div th:replace="~{Employee/ProfileEdite::editprofile}" ></div> 
+	</div>
+		
+	<div th:if="${LoginUser}">
+	<div th:replace="~{Employee/PresentEmployeeList::presentEmployeeList}"></div> 
+	</div>
+	
+	<div th:if="${LoginUser}">
+	<div th:replace="~{Employee/AbsentEmployeeList::absentEmployeeList}"></div> 
+	</div>
+		
+	<div>
+	<div th:replace="${content}" ></div>
+	</div>
+	
+	
+	
+	
+	</body>
+
+	
+	<style th:replace="~{AllCssStyle::AllCssStyle}">
+	</style>
+	
+</html>

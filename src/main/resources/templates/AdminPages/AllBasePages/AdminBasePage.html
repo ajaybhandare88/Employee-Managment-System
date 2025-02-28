@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content,title)">
+<head th:replace="~{AllLinks::bootstraplink}">
+	
+</head>
+<body style="background-color: white;">
+	
+	
+	
+	<div>
+	<div th:replace="~{AdminPages/Navbar::AdminNavbar}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/AdminProfileModel::AdminProfile}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/AdminProfileEdit::EmpDetailsEdit}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="~{AdminPages/NewAddEmployeeList::NewAddEmployeeList}"></div> 
+	</div>
+	
+	<div>
+	<div th:replace="${content}" ></div>
+	</div>
+	
+	
+	
+	
+	</body>
+
+	
+	<style th:replace="~{AllCssStyle::AllCssStyle}">
+	</style>
+	
+</html>

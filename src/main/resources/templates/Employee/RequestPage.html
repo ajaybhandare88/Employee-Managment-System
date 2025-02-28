@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Punching</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white;">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 3%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 20%">
+										<spam>Bank /</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 32%;">In Out Punching</h5>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+								<form th:action="@{'/employee/searchEmployee'}">
+									<div style="width: 50%; margin: auto; margin-top: 2%;">
+										<div class="form-outline" data-mdb-input-init>
+											<input id="search-focus" type="search" class="form-control"
+												name="id" th:value="*{id}" placeholder="Enter employee id" required="required" />
+
+										</div>
+										<button style="width: 50%; margin-left: 20%; margin-top: 3%;"
+											type="submit" class="btn btn-primary" data-mdb-ripple-init>Search
+										</button>
+										<hr>
+									</div>
+								</form>
+
+								<div>
+
+
+									<!--First box finish  -->
+									<div class="row" style="margin-top: 1%;">
+
+										<!--First Box Start  -->
+
+										<div class="col-xl-12 " style="margin: auto;">
+											<div class="card">
+												<div class="card-content">
+													<div class="card-body">
+													<p class="primary">Date Time And Punching</p>
+														<div style="display: flex;">
+															<div style="width: 100%; display: flex;">
+																
+																<div class="row" th:if="${PunchingEmployeeDetails}">
+																	<div class="col-sm-8">
+																		<p class="mb-0">Employee Id</p>
+																	</div>
+																	<div class="col-sm-8">
+																		<p class="text-muted mb-0">
+																			<spam
+																				th:text="${PunchingEmployeeDetails.id}" />
+																			</p>
+																	</div>
+																</div>
+																<div class="row" th:if="${PunchingEmployeeDetails}">
+																	<div class="col-sm-12">
+																		<p class="mb-0">Employee Name</p>
+																	</div>
+																	<div class="col-sm-6">
+																		<p class="text-muted mb-0">
+																			<spam
+																				th:text="${PunchingEmployeeDetails.employeeName}" />
+																			<spam
+																				th:text="${PunchingEmployeeDetails.employeeLastName}" />
+																		</p>
+																	</div>
+																</div>
+																<div class="row" style="margin: auto;"
+																th:unless="${PunchingEmployeeDetails}">
+																<div class="col-sm-12">
+																	<p style="width: 100%; margin: auto; color: red;"
+																		class="mb-0">Enter employee id</p>
+																</div>
+															</div>
+															</div>
+														</div>
+														<hr>
+
+														<div class="card mb-4">
+															<div class="card-body">
+																<div class="card text-center">
+																	<div>
+																		<h1 class="card-title">
+																		<spam th:text="${CurrentTime}"/>
+																		</h1>
+																		<form th:action="@{'/employee/outPunch'}" method="post">
+																		<div th:if="${CurrentDateData==true && PunchingEmployeeDetails!=null}">
+																		<p class="card-text">Click here on button</p>
+																		<input name="employeeId" th:value="${PunchingEmployeeDetails.id}" hidden="true">
+																		<button type="submit" class="btn btn-danger" style="width: 60%">Out Punch</button >
+																		</div>
+																		</form>
+																		
+																		<form th:action="@{'/employee/InPunch'}" method="post">
+																		<div th:if="${CurrentDateData==false && PunchingEmployeeDetails!=null} ">
+																		<p class="card-text">Click here on button</p>
+																		<input name="employeeId" th:value="${PunchingEmployeeDetails.id}" hidden="true">
+																		<button class="btn btn-success" style="width: 60%">In Punch</button>
+																		</div>
+																		</form>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--First Box Close  -->
+
+
+
+										</div>
+
+									</div>
+
+
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<!-- 1 -->
+	</section>
+</body>
+</html>

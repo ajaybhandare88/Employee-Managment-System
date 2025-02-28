@@ -1,0 +1,270 @@
+
+
+<div data-th-fragment="EmpDetailsEdit" id="EmpDetailsEdit"
+	data-bs-keyboard="false" data-bs-backdrop="static"
+	class="modal bd-example-modal-lg" role="dialog">
+	<div class="modal-dialog modal-lg"
+		style="margin-right: 33%; margin-top: 3%;">
+		<div class="modal-content" style="width: 1100px;">
+
+			<!--Profile close button  -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel" style="width: 48%">
+					<spam />
+				</h5>
+				<spam class="text-muted mb-0">Profile </spam>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+
+			<!--Model body-->
+			<div th:if="${LoginUser}" th:object="${LoginUser}">
+				<div class="row" style="margin-top: 1%;">
+
+					<!--First Box Start  -->
+
+					<div class="col-xl-12 " style="margin: auto;">
+						<div class="card">
+							<div class="card-content">
+								<div class="card-body">
+
+									<!---------profile box start---------------->
+									<div class="container">
+
+										<div class="row">
+
+											<div class="col-sm" style="margin: auto;">
+												<div
+													class="d-flex flex-column align-items-center text-center">
+													<img alt="Admin"
+														th:src="@{https://www.bootdey.com/img/Content/avatar/avatar7.png}"
+														class="rounded-circle" width="150">
+												</div>
+
+												<div style="text-align: center;">
+													<h2 class="text-muted mb-0">
+														<spam th:text="*{employeeName}" />
+														<spam th:text="*{employeeLastName}" />
+													</h2>
+												</div>
+												<div style="text-align: center;">
+													<h2 class="text-muted mb-0">
+														<spam style="font-size: small; color: green; "
+															th:if="*{isActive==true}">Active</spam>
+														<spam style="font-size: small; color: red; "
+															th:if="*{isActive==false}">De-Active</spam>
+
+													</h2>
+												</div>
+
+											</div>
+
+											<div class="col-sm">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Employee Id</p>
+													</div>
+													<div class="col-sm-7">
+											<input name="employeeId"
+												style="border: none; background-color: white; border-bottom: 1px solid black;"
+												class="form-control form-control-sm" type="number"
+												th:value="*{id}" readonly="readonly">
+
+										</div>
+												</div>
+												<hr style="height: 0; margin: 7px 0px;">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Employee
+															Name</p>
+													</div>
+													<div class="col-sm-7">
+											<input name="employeeName"
+												style="border: none; border-bottom: 1px solid black;"
+												class="form-control form-control-sm" type="text"
+												th:value="*{employeeName}">
+
+										</div>
+												</div>
+												
+												<hr style="height: 0; margin: 7px 0px;">
+												<div class="row">
+										<div class="col-sm-5">
+											<p style="font-size: small;" class="mb-0">Last Name</p>
+										</div>
+										<div class="col-sm-7">
+											<input name="employeeLastName"
+												style="border: none; border-bottom: 1px solid black;"
+												class="form-control form-control-sm" type="text"
+												th:value="*{employeeLastName}">
+
+										</div>
+									</div>
+									<hr style="height: 0; margin: 7px 0px;">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Mobile
+															Number</p>
+													</div>
+													<div class="col-sm-7">
+											<input name="mobileNumber"
+												style="border: none; border-bottom: 1px solid black;"
+												class="form-control form-control-sm" type="text"
+												th:value="*{mobileNumber}">
+										</div>
+												</div>
+												<hr style="height: 0; margin: 7px 0px;">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Gmail Id</p>
+													</div>
+													<div class="col-sm-7">
+											<input name="gmailId"
+												style="border: none; border-bottom: 1px solid black;"
+												class="form-control form-control-sm" type="text"
+												th:value="*{gmailId}">
+										</div>
+												</div>
+												<hr style="height: 0; margin: 7px 0px;">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Dipartment</p>
+													</div>
+																					<div class="col-sm-7">
+											<select class="form-control" name="Department" style="border: none; border-bottom: 1px solid black;" required>
+												<option style="font-size: small;" class="mb-0" selected disabled>-Select Department-</option>
+												<option style="font-size: small;" class="mb-0">hello</option>
+												<option style="font-size: small;" class="mb-0">byy</option>
+												<option style="font-size: small;" class="mb-0">kyu</option>
+											</select>
+										</div>
+												</div>
+												<hr style="height: 0; margin: 7px 0px;">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Designation</p>
+													</div>
+													<div class="col-sm-7">
+											<select class="form-control" name="Designation" style="border: none; border-bottom: 1px solid black;" required>
+														<option selected disabled>-Select Designation-</option>
+														<option style="font-size: small;" class="mb-0">hr</option>
+								 						<option style="font-size: small;" class="mb-0">helper</option>
+														<option style="font-size: small;" class="mb-0">owner</option>
+													</select>
+										</div>
+												</div>
+												<hr style="height: 0; margin: 7px 0px;">
+												
+											</div>
+
+											<div class="col-sm">
+												<div class="col-sm">
+												<div class="row">
+													<div class="col-sm-5">
+														<p style="font-size: small;" class="mb-0">Joining Date</p>
+													</div>
+													<div class="col-sm-7">
+														<p style="font-size: small;" class="text-muted mb-0">
+															<spam style="font-size: small;" th:text="*{joiningDate}" />
+														</p>
+													</div>
+												</div>
+												<hr style="height: 0; margin: 7px 0px;">
+													<div class="row">
+														<div class="col-sm-5">
+															<p style="font-size: small;" class="mb-0">Address</p>
+														</div>
+														<div class="col-sm-7">
+												<input name="address"
+													style="border: none; border-bottom: 1px solid black;"
+													class="form-control form-control-sm" type="text"
+													th:value="*{address}">
+											</div>
+													</div>
+													<hr style="height: 0; margin: 7px 0px;">
+													<div class="row">
+														<div class="col-sm-5">
+															<p style="font-size: small;" class="mb-0">Role</p>
+														</div>
+														<div class="col-sm-7">
+															<p class="text-muted mb-0">
+																<spam style="font-size: small;" th:text="*{type}" />
+															</p>
+														</div>
+													</div>
+													<hr style="height: 0; margin: 7px 0px;">
+													<div class="row">
+														<div class="col-sm-5">
+															<p style="font-size: small;" class="mb-0">Exit Date</p>
+														</div>
+														<div class="col-sm-7">
+															<p class="text-muted mb-0" th:if="*{exitDate}">
+																<spam style="font-size: small;" th:text="*{exitDate}" />
+															</p>
+															<p class="text-muted mb-0" th:unless="*{exitDate}">
+																<spam style="font-size: small;"> Currently
+																Working</spam>
+															</p>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+									<!---------------profile box end-------------->
+									<hr>
+									<div>
+
+										<!-- <form th:action="@{'/admin/employee/deactivate'}"
+																	th:if="${LoginUser.isActive==true}">
+																	<input style="border: 0px;"
+																		th:value="${LoginUser.id}" name="employeeId"
+																		hidden="true">
+																	<button type="submit" class="btn btn-danger btn-sm"
+																		style="margin-left: 70%;">De-Activate Account</button>
+																</form> -->
+										<!-- <form th:action="@{'/admin/employee/ReActive'}"
+																	th:if="${LoginUser.isActive==false}">
+																	<input style="border: 0px;"
+																		th:value="${LoginUser.id}" name="employeeId"
+																		hidden="true">
+																	<button type="submit" class="btn btn-success btn-sm"
+																		style="margin-left: 70%;">Re-Activate Account</button>
+																</form> -->
+
+
+
+										<a data-bs-toggle="modal" data-bs-target="#empDetailsEdit"
+											type="button" style="width: 50%; margin: auto; color: white;"
+											class="btn btn-primary btn-sm btn-block">Update Profile</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<!-- Model body -->
+
+
+		</div>
+	</div>
+</div>

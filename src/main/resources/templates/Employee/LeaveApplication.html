@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Leave Application</title>
+</head>
+<body>
+	<section class="mainclass" style="margin-top: 4%;">
+
+
+
+		<div th:if="${LoginUser}">
+			<div th:replace="~{Employee/SidebarPage::sidebar}"></div>
+		</div>
+
+
+
+
+		<div>
+			<div style="background-color: white; ">
+
+
+
+				<div class="container px-1">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-3 border bg-light" style="margin-top: 2%;">
+								<div class="col-md-auto row">
+									<h5 style="width: 30%">
+										<spam>Leave Application/</spam>
+										<spam style="font-size: x-small;" th:text="${LoginUser.type}" />
+									</h5>
+
+									<h5 style="margin: auto; width: 34%;" class="primary">
+										Leave Application</h5>
+
+									<h6 style="width: 13%">
+										<spam th:text="${FormatedCurrentDate}" />
+									</h6>
+
+								</div>
+								<hr style="margin: 0px; color: black;">
+
+
+
+								<div class="grey-bg container-fluid">
+									<div class="row">
+										<div class="col-6 mt-3 mb-1">
+										<div th:replace="RegistrationMessage::sucess_message"></div>
+										</div>
+									</div>
+								</div>
+
+								<div style="display: flex;">
+
+									<!--Left box Start-->
+									
+									<div class="col-xl-7 " style="margin: auto;">
+									
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body" style="padding-bottom: 0px;">
+												<form id="contact-form" role="form" th:action="@{'/employee/leaveformSubmit'}" method="post" >
+													<div style="display: flex;">
+														<div style="width: 50%; margin-left: 38%;">
+															<p class="primary">Information</p>
+														</div>
+													</div>
+													<hr style="margin: 0px;">
+
+													<div class="card mb-1">
+														<div class="card-body"  style="padding-bottom: 0;">
+														
+														<div class="row" style="display: grid; grid-template-columns: auto auto;">
+														<div>
+																<input id="form_name" type="date" name="fromLeaveDate"
+																class="form-control"
+																required="required" data-error="Date is required.">
+															<label class="form-label" for="firstName">From
+																date</label>
+																</div>
+																<div>
+																<input id="form_lastname" type="date" name="toLeaveDate"
+																class="form-control"
+																required="required" data-error="Date is required.">
+																<label class="form-label" for="firstName">To Date</label>
+																</div>
+															</div>
+															<hr >
+															<div class="row" style="display: grid; grid-template-columns: auto auto;">
+														<div>
+																<select id="form_need" name="leaveType"
+																		class="form-control" required="required"
+																		data-error="Please specify your need.">
+																		<option value="" selected disabled>--Select
+																			Leave Type--</option>
+																		<option th:if="${leavesType.paidLeave > 0}">Paid</option>
+																		<option th:if="${leavesType.annualEave > 0}">Annual Leave</option>
+																		<option th:if="${leavesType.sickLeave > 0}">Sick Leave</option> 
+																		<option>WFH Leave</option>
+																		<option disabled class="danger" th:if="${leavesType.sickLeave <= 0 && leavesType.annualEave <= 0 && leavesType.paidLeave <= 0}">
+																		You already use all leaves
+																		</option>
+																	</select>
+																	<label for="birthdayDate" class="form-label">Leave Type</label>
+																</div>
+																<div>
+																<select id="form_need" name="leaveDay"
+																		class="form-control" required="required"
+																		data-error="Please specify your need.">
+																		<option value="" selected disabled>--Select
+																			Leave Day--</option>
+																		<option>Half Day</option>
+																		<option>Full Day</option>
+																		<option>OD</option>
+																		<option>Other</option>
+																	</select> 
+																	<label
+																class="form-check-label" for="femaleGender">Leave</label>
+																</div>
+															</div>
+															<hr>
+
+															
+														<div class="row">
+													<div class="col-md-12" >
+																<div class="form-group" style="margin-bottom: 0px;">
+																	<label for="form_message">Reason*</label>
+																	<textarea id="form_message" name="reason"
+																		class="form-control"
+																		placeholder="Write your message here." rows="4"
+																		required="required"
+																		data-error="Please, leave us a message."></textarea>
+																</div>
+
+															</div>
+												</div>
+															
+														</div>
+													</div>
+													
+													<!--button  -->
+														<button type="submit" style="width: 90%; margin: auto;" class="btn btn-sm btn-primary btn-lg btn-block">Submit</button>
+													
+													<!--button  -->
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- <div style="margin-left: 3%; width: 50%; ">
+										<div class="card-body  ">
+
+											<form id="contact-form" role="form" th:action="@{'/employee/leaveformSubmit'}" method="post" >
+
+												<div class="row">
+													<div class="col-md-6 mb-4">
+
+														<div data-mdb-input-init class="form-outline">
+															<input id="form_name" type="date" name="fromLeaveDate"
+																class="form-control"
+																required="required" data-error="Date is required.">
+															<label class="form-label" for="firstName">From
+																date</label>
+														</div>
+
+													</div>
+													<div class="col-md-6 mb-4">
+
+														<div data-mdb-input-init class="form-outline">
+															<input id="form_lastname" type="date" name="toLeaveDate"
+																class="form-control"
+																required="required" data-error="Date is required.">
+																<label class="form-label" for="firstName">To Date</label>
+														</div>
+
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6 mb-4 d-flex align-items-center">
+
+														<div data-mdb-input-init
+															class="form-outline datepicker w-100">
+															<select id="form_need" name="leaveType"
+																		class="form-control" required="required"
+																		data-error="Please specify your need.">
+																		<option value="" selected disabled>--Select
+																			Leave Type--</option>
+																		<option th:if="${leavesType.paidLeave > 0}">Paid</option>
+																		<option th:if="${leavesType.annualEave > 0}">Annual Leave</option>
+																		<option th:if="${leavesType.sickLeave > 0}">Sick Leave</option> 
+																		<option>WFH Leave</option>
+																		<option disabled class="danger" th:if="${leavesType.sickLeave <= 0 && leavesType.annualEave <= 0 && leavesType.paidLeave <= 0}">
+																		You already use all leaves
+																		</option>
+																	</select>
+																	<label for="birthdayDate" class="form-label">Leave Type</label>
+														</div>
+
+													</div>
+													<div class="col-md-6 mb-4 d-flex align-items-center">
+
+														<div data-mdb-input-init
+															class="form-outline datepicker w-100">
+															<select id="form_need" name="leaveDay"
+																		class="form-control" required="required"
+																		data-error="Please specify your need.">
+																		<option value="" selected disabled>--Select
+																			Leave Day--</option>
+																		<option>Half Day</option>
+																		<option>Full Day</option>
+																		<option>OD</option>
+																		<option>Other</option>
+																	</select> 
+																	<label
+																class="form-check-label" for="femaleGender">Leave</label>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+																<div class="form-group">
+																	<label for="form_message">Reason*</label>
+																	<textarea id="form_message" name="reason"
+																		class="form-control"
+																		placeholder="Write your message here." rows="4"
+																		required="required"
+																		data-error="Please, leave us a message."></textarea>
+																</div>
+
+															</div>
+												</div>
+												
+												<div class="mt-4 pt-2" style="margin: auto; width: 19%;">
+													<input data-mdb-ripple-init class="btn btn-primary btn-lg"
+														type="submit" value="Submit" />
+												</div>
+												
+												<div class="row">
+													<div class="col-md-12">
+																<div class="form-group">
+													<input type="submit"
+															class="btn btn-success btn-send  pt-2 btn-block"
+															value="Submit">
+												</div>
+												</div>
+												</div>
+
+											</form>
+										</div>
+										
+									</div> -->
+									<!--Left box end-->
+
+									<!--Three box Start-->
+									<div style="width: 30%; margin-left: 3%;" th:object="${leavesTypes}">
+										<div class="col-xl-3 col-sm-6 col-12" style="max-width: 100%;">
+											<div class="card">
+												<div class="card-content">
+													<a data-bs-toggle="modal"
+														data-bs-target="#presentEmployeelist" type="button"
+														style="width: 100%;">
+														<div class="card-body">
+															<div class="media d-flex">
+																<div class="media-body text-left">
+																	<h3  th:if="${leavesType}">
+																		<spam th:class="success" th:text="${leavesType.annualEave}"/>
+																		<sapm>Leaves</spam>
+																	</h3>
+																	<h3 class="primary" th:unless="${leavesType}">
+																		<spam class="danger" >0 Leaves</spam>
+																	</h3>
+																	<span>Annual Remaining Leaves</span>
+																</div>
+																<div class="align-self-center">
+																	<i
+																		class="icon-book-open primary font-large-2 float-right"></i>
+																</div>
+															</div>
+															<div class="progress mt-1 mb-0" style="height: 7px;">
+																<div class="progress-bar bg-primary" role="progressbar"
+																	style="width: 100%" aria-valuenow="80"
+																	aria-valuemin="0" aria-valuemax="100"></div>
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-xl-3 col-sm-6 col-12" style="max-width: 100%;">
+											<div class="card">
+												<div class="card-content">
+													<a data-bs-toggle="modal"
+														data-bs-target="#presentEmployeelist" type="button"
+														style="width: 100%;">
+														<div class="card-body">
+															<div class="media d-flex">
+																<div class="media-body text-left">
+																	<h3 class="primar" th:if="${leavesType}">
+																		<spam th:class="success" th:text="${leavesType.sickLeave}" />
+																		<sapm>Leaves</spam>
+																	</h3>
+																	<h3 class="danger" th:unless="${leavesType}">
+																		<spam>0 Leaves </spam>
+																	</h3>
+																	<span>Sick Leaves</span>
+																</div>
+																<div class="align-self-center">
+																	<i
+																		class="icon-book-open primary font-large-2 float-right"></i>
+																</div>
+															</div>
+															<div class="progress mt-1 mb-0" style="height: 7px;">
+																<div class="progress-bar bg-primary" role="progressbar"
+																	style="width: 100%" aria-valuenow="80"
+																	aria-valuemin="0" aria-valuemax="100"></div>
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-xl-3 col-sm-6 col-12" style="max-width: 100%;">
+											<div class="card">
+												<div class="card-content">
+													<a data-bs-toggle="modal"
+														data-bs-target="#presentEmployeelist" type="button"
+														style="width: 100%;">
+														<div class="card-body">
+															<div class="media d-flex">
+																<div class="media-body text-left">
+																	<h3 class="primar" th:if="${leavesType}">
+																		<spam th:class="success" th:text="${leavesType.paidLeave}"/>
+																		<sapm>Leaves</spam>
+																	</h3>
+																	<h3 class="danger" th:unless="${leavesType}">
+																		<spam>0 Leaves</spam>
+																	</h3>
+																	<span>Paid Leaves Remaining</span>
+																</div>
+																<div class="align-self-center">
+																	<i
+																		class="icon-book-open primary font-large-2 float-right"></i>
+																</div>
+															</div>
+															<div class="progress mt-1 mb-0" style="height: 7px;">
+																<div class="progress-bar bg-primary" role="progressbar"
+																	style="width: 100%" aria-valuenow="80"
+																	aria-valuemin="0" aria-valuemax="100"></div>
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--End Three box -->
+								</div>
+
+							</div>
+
+							<div></div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+
+<div data-th-fragment="SalaryReleaseAllEmployeeList" id="SalaryReleaseAllEmployeeList"
+	data-bs-keyboard="false" data-bs-backdrop="static"
+	class="modal bd-example-modal-lg" role="dialog">
+	<div class="modal-dialog modal-lg" style="margin-right: 33%;
+    margin-top: 3%;">
+		<div class="modal-content" style="    width: 1100px;"> 
+
+			<!--Profile close button  -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel" style="width: 43%">
+				<spam/>
+				</h5>
+				<spam class="primary" >Salary Release All Employee List</spam>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<!--  -->
+			
+			<!--Model body-->
+			 <div
+							class="d-flex align-items-center h-100"
+							style="background-color: white;">
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-12">
+
+										<div class="card">
+											<div class="card-body">
+												<div class="table-responsive">
+
+													<div class="container vertical-scrollable"
+														style="max-height: 65vh;">
+														<table class="table table-hover mb-0 ">
+															<thead>
+																<tr>
+																	<th scope="col">Date</th>
+																	<th scope="col">Id</th>
+																	<th scope="col">Name</th>
+																	<th scope="col">Basic Salary</th>
+																	<th scope="col">Gross Salary</th>
+																	<th scope="col">Professional Tax</th>
+																	<th scope="col">Net Salary</th>
+																</tr>
+															</thead>
+
+															<tbody>
+
+
+
+																<tr th:each="salaryMonth : ${SalaryReleaseEmployeeList}" >
+																	<td ><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}">
+																	<spam style="color: black;" th:text="${Month}" /></a></td>
+																	<td><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}">
+																	<spam  th:text="${salaryMonth.employee.id}" /></a></td>
+																	<td><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}">
+																	<spam th:text="${salaryMonth.employee.employeeName}" />
+																	<spam th:text="${salaryMonth.employee.employeeLastName}" /></a>
+																	</td>
+																	<td><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}" >
+																	<spam style="color: black;" th:text="${salaryMonth.basicSalary}" /></a></td>
+																	<td><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}">
+																	<spam style="color: black;" th:text="${salaryMonth.grossEarning}" /></a></td>
+																	<td><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}" >
+																	<spam style="color: black;" th:text="${salaryMonth.professionalTax}" /></a></td>
+																	<td><a style="text-decoration: none;" th:href="@{'/admin/employee/search' (id=${salaryMonth.employee.id})}">
+																	<spam style="color: black;" th:text="${salaryMonth.netSalary}" /></a></td>
+																	
+																</tr>	
+																
+															</tbody>
+
+														</table>
+														
+													</div>
+													
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+				<!-- Model body -->
+
+
+		</div>
+	</div>
+</div>

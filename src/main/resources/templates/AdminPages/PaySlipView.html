@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{AdminPages/AllBasePages/SalaryServicesBasePage::layout(~{::section},~{::title})}">
+<head>
+<meta charset="UTF-8" />
+<title>Pay Slip</title>
+</head>
+<body>
+
+	<section class="mainclass" style="margin-top: 4%;">
+		<div>
+			<div style="background-color: white;">
+				<div
+					class="container container-lg, container-md container-sm container-xl">
+					<div class="row gx-6">
+						<div class="col">
+
+							<div class="p-2" style="margin-top: 1%;">
+								<form th:action="@{'/admin/salary/generateSalary'}">
+									<div style="width: 50%; margin: auto; margin-top: 2%;">
+										<div class="form-outline" data-mdb-input-init>
+											<input id="search-focus" type="search" class="form-control"
+												name="employeeId" placeholder="Enter employee id"
+												required="required" />
+
+										</div>
+
+										<div class="row" style="margin-left: 16%;">
+											<div class="col-sm-3">
+												<p style="font-size: small;" class="mb-0">Select Month</p>
+											</div>
+											<div class="col-sm-4">
+												<input style="border: 0px;" type="month" name="salaryMonth"
+													required="required">
+											</div>
+										</div>
+
+										<button style="width: 50%; margin-left: 20%; margin-top: 3%;"
+											type="submit" class="btn btn-primary" data-mdb-ripple-init>Search
+										</button>
+
+										<hr>
+									</div>
+								</form>
+								<div style="width: 53%; margin: auto;">
+									<div th:replace="~{RegistrationMessage::sucess_message}"></div>
+								</div>
+
+								<div th:if="${SalarySlip}">
+									<div class="col-md-auto row text-muted mb-0">
+										<h5 style="margin: 5px auto; width: 20%;">Pay Slip - <spam class="primary" th:text="${month}"/></h5>
+										
+									</div>
+									<hr style="margin: 0px; color: black;">
+
+									<div class="row" th:if="${SalarySlip}"
+										th:object="${SalarySlip}">
+										<div class="col-xl-4 col-sm-6 col-12">
+											<div class="card">
+												<div class="card-content">
+													<a data-bs-toggle="modal"
+														data-bs-target="#presentEmployeelist" type="button"
+														style="width: 100%;">
+														<div class="card-body">
+															<div class="media d-flex">
+																<div class="media-body text-left">
+																	<h3 class="success" style="text-align: center">
+																		<spam th:text="*{grossEarning}" />
+																		Rs
+																	</h3>
+																	<div style="text-align: center">
+																		<span>Gross Salary</span>
+																	</div>
+																</div>
+																<div class="align-self-center">
+																	<i
+																		class="icon-book-open success font-large-2 float-right"></i>
+																</div>
+															</div>
+															<div class="progress mt-1 mb-0" style="height: 7px;">
+																<div class="progress-bar bg-success" role="progressbar"
+																	style="width: 100%" aria-valuenow="80"
+																	aria-valuemin="0" aria-valuemax="100"></div>
+															</div>
+
+														</div>
+													</a>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="col-xl-4 col-sm-6 col-12" th:if="${SalarySlip}"
+											th:object="${SalarySlip}">
+
+											<div class="card">
+												<div class="card-content">
+													<a data-bs-toggle="modal"
+														data-bs-target="#absentEmployeelist" type="button"
+														style="width: 100%;">
+														<div class="card-body">
+															<div class="media d-flex">
+																<div class="media-body text-left">
+																	<h3 class="warning" style="text-align: center">
+																		<spam />
+
+																	</h3>
+																	<div style="text-align: center">
+																		<span>Diduction</span>
+																	</div>
+																</div>
+																<div class="align-self-center">
+																	<i
+																		class="icon-bubbles warning font-large-2 float-right"></i>
+																</div>
+															</div>
+															<div class="progress mt-1 mb-0" style="height: 7px;">
+																<div class="progress-bar bg-warning" role="progressbar"
+																	style="width: 100%" aria-valuenow="35"
+																	aria-valuemin="0" aria-valuemax="100"></div>
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="col-xl-4 col-sm-6 col-12">
+
+											<div class="card">
+												<div class="card-content">
+													<div class="card-body">
+														<div class="media d-flex">
+															<div class="media-body text-left">
+																<h3 class="primary" style="text-align: center">
+																	<spam th:text="*{netSalary}" />
+																	Rs
+																</h3>
+																<div style="text-align: center">
+																	<span>Net Salary</span>
+																</div>
+															</div>
+															<div class="align-self-center">
+																<i class="icon-cup primary font-large-2 float-right"></i>
+															</div>
+														</div>
+														<div class="progress mt-1 mb-0" style="height: 7px;">
+															<div class="progress-bar bg-primary" role="progressbar"
+																style="width: 100%" aria-valuenow="60" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xl-12 " style="margin: auto;">
+										<div class="card">
+											<div class="card-content">
+												<div class="card-body">
+
+													<div class="container bg-light">
+
+														<div class="row">
+
+															<div class="col-sm" th:if="${employee}"
+																th:object="${employee}">
+
+																<div class="primary">Personal Details</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Employee
+																			Id</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;" th:text="*{id}" />
+																		</p>
+																	</div>
+																</div>
+
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Employee
+																			Name</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{employeeName}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Dipartment</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{Department}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Designation</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{Designation}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row" th:if="${bankDetails}"
+																	th:object="${bankDetails}">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Bank
+																			Name</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;" th:text="*{bankName}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row" th:if="${bankDetails}"
+																	th:object="${bankDetails}">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Bank A/C
+																			Number</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{bankAccountNumber}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+
+
+															</div>
+
+
+
+															<div class="col-sm" th:if="${totalWorkingDay}">
+																<div class="primary">Data</div>
+																<hr>
+																<div class="col-sm">
+																	<div class="row" th:if="${totalWorkingDay}">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">Total
+																				Working Day</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;"
+																					th:text="${totalWorkingDay}" />
+																			</p>
+																		</div>
+																	</div>
+																	<hr style="height: 0; margin: 7px 0px;">
+																	<div class="row" th:if="${presentSize}">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">Present
+																				Days</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;"
+																					th:text="${presentSize}" />
+																			</p>
+																		</div>
+																	</div>
+																	<hr style="height: 0; margin: 7px 0px;">
+																	<div class="row" th:if="${absent}">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">Absent</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;" th:text="${absent}" />
+																			</p>
+																		</div>
+																	</div>
+
+
+																</div>
+															</div>
+
+
+
+														</div>
+
+													</div>
+
+													<hr>
+
+													<div class="container">
+
+														<div class="row">
+
+															<div class="col-sm" th:if="${SalarySlip}"
+																th:object="${SalarySlip}">
+
+																<div class="primary">Total earning</div>
+																<hr>
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Basic
+																			Salary</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{basicSalary}" />
+																		</p>
+																	</div>
+																</div>
+
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Medical
+																			Allowance</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{medicalAllowance}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Transporting
+																			Allowance</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{transportingAllowance}" />
+																		</p>
+																	</div>
+																</div>
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0">Insurance</p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0">
+																			<spam style="font-size: small;"
+																				th:text="*{insurance}" />
+																		</p>
+																	</div>
+																</div>
+
+																<hr style="height: 0; margin: 7px 0px;">
+																<div class="row bg-light">
+																	<div class="col-sm-7">
+																		<p style="font-size: small;" class="mb-0"></p>
+																	</div>
+																	<div class="col-sm-5">
+																		<p class="text-muted mb-0 success ">
+																			Gross earning -
+																			<spam style="color: black;" th:text="*{grossEarning}" />
+																		</p>
+																	</div>
+																</div>
+
+																<hr style="height: 0; margin: 7px 0px;">
+
+
+															</div>
+
+
+
+															<div class="col-sm" th:if="${SalarySlip}"
+																th:object="${SalarySlip}">
+																<div class="primary">Deduction</div>
+																<hr>
+																<div class="col-sm">
+																	<div class="row">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">Professional
+																				Tax</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;"
+																					th:text="*{professionalTax}" />
+																			</p>
+																		</div>
+																	</div>
+																	<hr style="height: 0; margin: 7px 0px;">
+																	<div class="row">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">Leaves
+																				deductions</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;"
+																					th:text="*{leavesDeduction}" />
+																			</p>
+																		</div>
+																	</div>
+																	<hr style="height: 0; margin: 7px 0px;">
+																	<div class="row">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">Other
+																				deductions</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;"
+																					th:text="*{otherDeduction}" />
+																			</p>
+																		</div>
+																	</div>
+																	<hr style="height: 0; margin: 7px 0px;">
+																	<div class="row">
+																		<div class="col-sm-5">
+																			<p style="font-size: small;" class="mb-0">|</p>
+																		</div>
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0">
+																				<spam style="font-size: small;" />
+																			</p>
+																		</div>
+																	</div>
+
+																	<hr style="height: 0; margin: 7px 0px;">
+																	<div class="row bg-light">
+																		<div class="col-sm-7">
+																			<p class="text-muted mb-0 danger ">
+																				Total deduction -
+																				<spam style="color: black;"
+																					th:text="*{otherDeduction}" />
+																		</div>
+																		<div class="col-sm-5">
+																			<p class="text-muted mb-0 danger">
+																				<spam style="color: black;"></spam>
+																			</p>
+																		</div>
+																	</div>
+																	<hr style="height: 0; margin: 7px 0px;">
+																</div>
+															</div>
+
+
+
+														</div>
+
+													</div>
+													<div class="row " style="text-align: center;"
+														th:if="${SalarySlip}" th:object="${SalarySlip}">
+
+														<div class="col-sm-12">
+															<p class="primary" style="font-size: large;">
+																Net Salary-
+																<spam style="color: black; " th:text="*{netSalary}" />
+															</p>
+														</div>
+													</div>
+													<hr>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+								
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 1 -->
+	</section>
+
+</body>
+</html>

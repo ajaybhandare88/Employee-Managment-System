@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Base::layout(~{::section},~{::title})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact</title>
+</head>
+<body > 	
+		<section>
+			<div style="margin-top: 5%;">
+
+				<div>
+					<form th:action="@{'/addnewemployee'}" method="post">
+						<div class="row" style="margin-top: 1%;">
+
+							<!--First Box Start  -->
+
+							<div class="col-xl-12 " style="margin: auto;">
+								<div class="card">
+									<div class="card-content">
+										<div class="card-body">
+
+											<!---------profile box start---------------->
+											<div class="container">
+
+												<div class="row">
+
+													<div class="col-sm" style="margin: auto;">
+														<div
+															class="d-flex flex-column align-items-center text-center">
+
+															<img alt="Admin"
+																th:src="@{https://www.bootdey.com/img/Content/avatar/avatar7.png}"
+																class="rounded-circle" width="150"> <input
+																type="file" style="width: 70%;" />
+														</div>
+
+														<div style="text-align: center;">
+															<h2 class="text-muted mb-0"></h2>
+														</div>
+
+
+													</div>
+
+													<div class="col-sm">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Employee
+																	Name</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="employeeFirstName"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text" required="required">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">
+																	Last Name</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="lastName" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Mobile
+																	Number</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="mobileNumber" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Gmail
+																	Id</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="gmailId" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Gender</p>
+																</div>
+																<div class="col-sm-7" style="display: flex;">
+																	<div class="form-check">
+																		<input class="form-check-input" type="radio"
+																			name="gender" id="flexRadioDefault1" required="required"
+																			value="Male" checked> <label
+																			style="margin-right: 21px;"
+																			class="form-check-label" for="flexRadioDefault1">
+																			Male </label>
+																	</div>
+
+																	<div class="form-check"
+																		style="margin-right: -60px;">
+
+																		<input class="form-check-input" type="radio"
+																			name="gender" id="flexRadioDefault2" required="required"
+																			value="Female"> <label
+																			class="form-check-label" for="flexRadioDefault2">Female
+																		</label>
+																	</div>
+																</div>
+															</div>
+														
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Address</p>
+																</div>
+																<div class="col-sm-7">
+																	<input name="address"
+																		style="border: none; border-bottom: 1px solid black;"
+																		class="form-control form-control-sm" type="text" required="required">
+																</div>
+															</div>
+														
+													
+														
+													</div>
+
+													<div class="col-sm">
+														<div class="col-sm">
+														
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Joining
+																	Date</p>
+															</div>
+															<div class="col-sm-7">
+																<input style="border: 0px;" type="date"
+																	name="joiningDate" required="required">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Designation</p>
+															</div>
+															<div class="col-sm-7">
+																<select class="form-control" name="Designation"
+																	style="border: none; border-bottom: 1px solid black;"
+																	required>
+																	<option selected disabled>-Select
+																		Designation-</option>
+																	<option style="font-size: small;" class="mb-0">hr</option>
+																	<option style="font-size: small;" class="mb-0">helper</option>
+																	<option style="font-size: small;" class="mb-0">owner</option>
+																</select>
+															</div>
+														</div>
+															
+															<hr style="height: 0; margin: 7px 0px;">
+															<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Dipartment</p>
+															</div>
+															<div class="col-sm-7">
+																<select class="form-control" name="Department"
+																	style="border: none; border-bottom: 1px solid black;"
+																	required>
+																	<option style="font-size: small;" class="mb-0"
+																		selected disabled>-Select Department-</option>
+																	<option style="font-size: small;" class="mb-0">hello</option>
+																	<option style="font-size: small;" class="mb-0">byy</option>
+																	<option style="font-size: small;" class="mb-0">kyu</option>
+																</select>
+															</div>
+														</div>
+															<hr style="height: 0; margin: 7px 0px;">
+															<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Role</p>
+																</div>
+																<div class="col-sm-7" style="display: flex;">
+																	<div class="form-check">
+																		<input class="form-check-input" type="radio"
+																			name="type" id="flexRadioDefault1"
+																			value="USER" checked> <label
+																			style="margin-right: 21px;"
+																			class="form-check-label" for="flexRadioDefault1">
+																			user</label>
+																	</div>
+
+																	<div class="form-check"
+																		style="margin-right: -60px;">
+
+																		<input class="form-check-input" type="radio"
+																			name="type" id="flexRadioDefault2"
+																			value="ADMIN"> <label
+																			class="form-check-label" for="flexRadioDefault2">Admin
+																		</label>
+																	</div>
+																</div>
+															</div>
+															
+															
+														
+
+														</div>
+													</div>
+
+												</div>
+
+											</div>
+											<!---------------profile box end-------------->
+											<hr>
+
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+
+						</div>
+
+
+						<div class="row" style="margin-bottom: 5%;">
+
+							<div class="col-xl-12 " style="margin: auto;">
+								<div class="card">
+									<div class="card-content">
+										<div class="card-body">
+
+											<!---------profile box start---------------->
+											<div class="container">
+
+												<div class="row">
+
+													<div class="col-sm">
+
+														<div class="primary">Salary Details</div>
+														<hr>
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Basic
+																	Salary</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="basicSalary" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Medical
+																	Allowance</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="medicalAllowance" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Rent
+																	Allowance</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="HouseRentAllAllowance" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Persnol
+																	Allowance</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="persnolAllowance" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Transporting
+																	Allowance</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="transportingAllowance" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Insurance</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="insurance" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">professionalTax</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="professionalTax" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="text">
+															</div>
+														</div>
+
+													</div>
+
+													<div class="col-sm">
+														<div class="primary">Leaves</div>
+														<hr>
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Annual
+																	Leaves</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="annualEave" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="number">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Sick
+																	Leaves</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="sickLeave" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="number">
+															</div>
+														</div>
+														<hr style="height: 0; margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">Paid
+																	Leaves</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="paidLeave" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="number">
+															</div>
+														</div>
+														<hr style="margin: 7px 0px;">
+														<div class="row">
+															<div class="col-sm-5">
+																<p style="font-size: small;" class="mb-0">WFH
+																	Leaves</p>
+															</div>
+															<div class="col-sm-7">
+																<input name="WFHLeave" required="required"
+																	style="border: none; border-bottom: 1px solid black;"
+																	class="form-control form-control-sm" type="number">
+															</div>
+														</div>
+														<hr style="margin: 7px 0px;">
+
+
+
+
+													</div>
+
+													<div class="col-sm">
+														<div class="primary">Banking Details</div>
+														<hr>
+														<div class="col-sm">
+															<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Bank
+																		A/C No.</p>
+																</div>
+																<div class="col-sm-7">
+																	<input name="bankAccountNumber" required="required"
+																		style="border: none; border-bottom: 1px solid black;"
+																		class="form-control form-control-sm" type="text">
+																</div>
+															</div>
+															<hr style="height: 0; margin: 7px 0px;">
+															<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Bank
+																		Name</p>
+																</div>
+																<div class="col-sm-7">
+																	<input name="bankName" required="required"
+																		style="border: none; border-bottom: 1px solid black;"
+																		class="form-control form-control-sm" type="text">
+																</div>
+															</div>
+															<hr style="height: 0; margin: 7px 0px;">
+															<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">IFSC
+																		Code</p>
+																</div>
+																<div class="col-sm-7">
+																	<input name="IFSC_Code" required="required"
+																		style="border: none; border-bottom: 1px solid black;"
+																		class="form-control form-control-sm" type="text">
+																</div>
+															</div>
+															<hr style="height: 0; margin: 7px 0px;">
+															<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Branch Name</p>
+																</div>
+																<div class="col-sm-7">
+																	<input name="branchName"
+																		style="border: none; border-bottom: 1px solid black;" required="required"
+																		class="form-control form-control-sm" type="text">
+																</div>
+															</div>
+
+															<hr style="height: 0; margin: 7px 0px;">
+															<div class="row">
+																<div class="col-sm-5">
+																	<p style="font-size: small;" class="mb-0">Bank
+																		Address</p>
+																</div>
+																<div class="col-sm-7">
+																	<input name="bankAddress"
+																		style="border: none; border-bottom: 1px solid black;" required="required"
+																		class="form-control form-control-sm" type="text">
+																</div>
+															</div>
+															<hr>
+														</div>
+													</div>
+
+
+
+												</div>
+
+											</div>
+											<!---------------profile box end-------------->
+											<hr>
+
+
+
+										</div>
+									</div>
+								</div>
+
+								<!--First Box Close  -->
+
+
+
+							</div>
+							<button type="submit" style="width: 50%; margin: auto;"
+								class="btn btn-primary btn-sm btn-block">Add new employee</button>
+						</div>
+
+
+					</form>
+
+				</div>
+			</div>
+		</section>
+</body>
+</html>
